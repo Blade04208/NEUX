@@ -21,6 +21,8 @@
     extensions = with inputs.vicinae-extensions.packages.${pkgs.stdenv.hostPlatform.system}; [
       bluetooth # provider key: "@Gelei/bluetooth-0"  (is "@Gelei/store.vicinae.bluetooth" in config)
       nix # provider key: "@knoopx/nix-0"        (is "@knoopx/store.vicinae.nix" in config)
+      wifi-commander
+      power-profile
     ];
 
     settings = {

@@ -45,7 +45,5 @@
     ];
 
     nixosModules.default = ./system/default.nix;
-
-    home-manager.backupFileExtension = "backup";
   };
 }

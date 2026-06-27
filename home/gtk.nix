@@ -14,10 +14,10 @@
     iconTheme = {
       name = "NEUX";
     };
-    # cursorTheme = {
-    #   name = "GoogleDot-Black";
-    #   size = 24;
-    # };
+    cursorTheme = {
+      name = "Adwaita";
+      size = 24;
+    };
 
     font = {
       name = "Fira Sans";
@@ -34,7 +34,7 @@
   };
 
   # home.pointerCursor = {
-  #   name = "GoogleDot-Black";
+  #   name = "Adwaita";
   #   size = 24;
   #   gtk.enable = true;
   #   x11.enable = true;
