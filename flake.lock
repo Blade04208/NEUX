@@ -150,14 +150,17 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1782207000,
-        "narHash": "sha256-8cIP+/EIlMzJvBgmB6eC8NXgZ323mOkCjj4E7b2joTc=",
-        "path": "/home/blade0/Projects/nimbus",
-        "type": "path"
+        "lastModified": 1782585414,
+        "narHash": "sha256-TRM+Dz6Zm+Iuu3QHJ+Q/YcII9m/nar2QfhRnQM0HPp8=",
+        "owner": "Blade04208",
+        "repo": "nimbus",
+        "rev": "ff65face609ca748d359b0e7d7b3036e13c45585",
+        "type": "github"
       },
       "original": {
-        "path": "/home/blade0/Projects/nimbus",
-        "type": "path"
+        "owner": "Blade04208",
+        "repo": "nimbus",
+        "type": "github"
       }
     },
     "nix-systems": {

@@ -19,32 +19,33 @@
     nimbus.url = "github:Blade04208/nimbus";
   };
   outputs =
-    {
-      vicinae,
-      self,
-      nixpkgs,
-      home-manager,
-      ...
-    }:
-    let
-      system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
-      # note - "username" below is meant for fast hm rebuilds. DO NOT COMMIT CHANGES TO THIS USERNAME ok thank you
-      username = "blade0";
-    in
-    {
-      homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [ ./home/default.nix ];
-        extraSpecialArgs = { inherit username; };
-      };
+  inputs@{
+    vicinae,
+    self,
+    nixpkgs,
+    home-manager,
+    ...
+  }:
+  let
+    system = "x86_64-linux";
+    pkgs = nixpkgs.legacyPackages.${system};
+    username = "blade0";
+  in
+  {
 
-      homeManagerModules.default = [
-        vicinae.homeManagerModules.default
-        ./home/default.nix
-      ];
-
-      # system-wide stuff
-      nixosModules.default = ./system/default.nix;
+    homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
+      inherit pkgs;
+      modules = [ ./home/default.nix ];
+      extraSpecialArgs = { inherit username inputs; };
     };
+
+    homeManagerModules.default = [
+      vicinae.homeManagerModules.default
+      ./home/default.nix
+    ];
+
+    nixosModules.default = ./system/default.nix;
+
+    home-manager.backupFileExtension = "backup";
+  };
 }
