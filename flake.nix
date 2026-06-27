@@ -16,7 +16,7 @@
     };
     vicinae.url = "github:vicinaehq/vicinae";
     vicinae-extensions.url = "github:vicinaehq/extensions";
-    nimbus.url = "github/Blade04208/nimbus";
+    nimbus.url = "github:Blade04208/nimbus";
   };
   outputs =
     {
