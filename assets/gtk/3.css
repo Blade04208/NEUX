@@ -1,0 +1,243 @@
+.background:not(popover),
+popover contents,
+popover arrow {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.125) 109.52%), linear-gradient(rgba(81, 81, 81, 0.3), rgba(81, 81, 81, 0.3)), rgba(40, 40, 40, 0.4);
+    box-shadow: inset 0px 0px 0px 1px rgba(255, 255, 255, 0.077);
+    border-radius: 10px;
+}
+
+splitbutton separator {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+window.window {
+    /* background: linear-gradient(180deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.125) 109.52%),
+                    linear-gradient(rgba(81, 81, 81, 0.3), rgba(81, 81, 81, 0.3)),
+                  rgba(40, 40, 40, 0.4); */
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 8.83%, rgba(0, 0, 0, 0.125) 109.52%), linear-gradient(#282828CC), linear-gradient(#51515180);
+
+    box-shadow: inset 0px 0px 0px 1px rgba(255, 255, 255, 0.077);
+    border-radius: 10px;
+}
+
+tabview {
+    background: rgba(0, 0, 0, 0.4);
+    margin: 0px 3px 3px;
+    border-radius: 7px;
+}
+
+headerbar,
+header,
+stack,
+.view,
+.sidebar,
+.top-bar,
+.main-header-bar,
+windowhandle,
+.overview,
+splitbutton button,
+.icon-listbox,
+.sidebar-pane {
+    background: transparent;
+    box-shadow: none;
+    border: none;
+    border-radius: 0px;
+}
+
+notebook,
+.content-pane tabview,
+.content-pane>viewport,
+viewport>clamp {
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 10px 0px 0px 0px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0px 4px 8px -2px rgba(0, 0, 0, 0.2);
+    margin: 0px;
+}
+
+menubutton button,
+.image-button:not(.close):not(.minimize):not(.maximize),
+.text-button,
+combobox {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1) 20%, rgba(0, 0, 0, 0.25) 40%, rgba(0, 0, 0, 0.4) 65%, rgba(0, 0, 0, 0.4) 75%, rgba(0, 0, 0, 0.25));
+    border: 1px solid rgba(7, 7, 7, 0.5);
+    border-radius: 5px;
+    box-shadow: 0px 1px 1.4px 0px #00000033 inset, 1;
+
+}
+
+combobox>box>* {
+    background: transparent;
+    box-shadow: none;
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 0px;
+    transition: background 0.3s ease;
+}
+
+combobox>box>*:first-child {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+combobox>box>*:last-child {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-left: 0px;
+}
+
+combobox>box>*:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+
+entry {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.28) -37.5%, rgba(0, 0, 0, 0.3) -8.1%, rgba(0, 0, 0, 0.3) 12.06%, rgba(0, 0, 0, 0.239453) 51.41%, rgba(0, 0, 0, 0.128) 80.34%, rgba(0, 0, 0, 0.176364) 110.71%), #7272724D;
+    box-shadow: 0px 1px 2px 1px #00000033 inset, 0px 1px 0px 0px #FFFFFF10;
+}
+
+splitbutton>button,
+splitbutton>menubutton {
+    background: transparent;
+    border: none;
+    border-radius: 0px;
+    box-shadow: none;
+}
+
+.boxed-list,
+.boxed-list-separate>.entry,
+.boxed-list-separate>.button:not(.suggested-action) {
+    background: rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.25);
+    transition: background 0.3s ease;
+}
+
+.boxed-list:hover,
+.boxed-list-separate>.entry:hover,
+.boxed-list-separate>.button:not(.suggested-action):hover {
+    background: rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.boxed-list:active,
+.boxed-list-separate>.entry:active,
+.boxed-list-separate>.button:not(.suggested-action):active {
+    background: rgba(0, 0, 0, 0.3);
+    box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+splitbutton>menubutton button {
+    background: none;
+    border: none;
+}
+
+.nautilus-pathbar {
+    background: transparent;
+    border-radius: 0px;
+}
+
+.nautilus-pathbar viewport {
+    background: transparent;
+    box-shadow: none;
+    border: none;
+    border-radius: 0px;
+}
+
+.nautilus-pathbar viewport>box>box {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1) 20%, rgba(0, 0, 0, 0.25) 40%, rgba(0, 0, 0, 0.4) 65%, rgba(0, 0, 0, 0.4) 75%, rgba(0, 0, 0, 0.25));
+    border: 1px solid rgba(7, 7, 7, 0.5);
+    border-radius: 5px;
+    box-shadow: 0px 1px 1.4px 0px #00000033 inset, 0px 1px 0px 0px #FFFFFF10;
+}
+
+.nautilus-pathbar viewport>box>box:only-child {
+    margin-right: 8px;
+}
+
+.nautilus-pathbar viewport>box>box:first-child {
+    margin-right: 4px;
+    padding-left: 0px;
+}
+
+.nautilus-pathbar viewport>box>box:not(:only-child):not(:first-child) {
+    margin-right: 4px;
+    padding-left: 8px;
+}
+
+.nautilus-pathbar viewport>box>box:last-child {
+    margin-right: 8px;
+    padding-left: 8px;
+}
+
+
+.nautilus-window headerbar .start stack .horizontal {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1) 20%, rgba(0, 0, 0, 0.25) 40%, rgba(0, 0, 0, 0.4) 65%, rgba(0, 0, 0, 0.4) 75%, rgba(0, 0, 0, 0.25));
+    border: 1px solid rgba(7, 7, 7, 0.5);
+    border-radius: 5px;
+    box-shadow: 0px 1px 1.4px 0px #00000033 inset, 0px 1px 0px 0px #FFFFFF10;
+}
+
+.nautilus-window headerbar .start stack .horizontal .image-button {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+.nautilus-window headerbar .start stack .horizontal>:first-child {
+    border-radius: 5px 0px 0px 5px;
+    box-shadow: 1px 0px 0px 0px rgba(255, 255, 255, 0.1);
+}
+
+.nautilus-window headerbar .start stack .horizontal>:first-child:disabled~imagebutton {
+    box-shadow: -1px 0px 0px 0px rgba(255, 255, 255, 0.1);
+}
+
+.nautilus-window headerbar .start stack .horizontal>:last-child {
+    border-radius: 0px 5px 5px 0px;
+    margin-left: -6px;
+}
+
+.nautilus-window headerbar .horizontal.start .image-button.toggle {
+    margin-right: -34px;
+    opacity: 0;
+}
+
+.nautilus-pathbar {
+    margin-right: -6px;
+}
+
+.nautilus-pathbar viewport box box:only-child .nautilus-path-button {
+    margin-left: -5px;
+}
+
+.nautilus-pathbar menubutton button {
+    margin-right: 6px;
+    margin-left: -3px;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1) 20%, rgba(0, 0, 0, 0.25) 40%, rgba(0, 0, 0, 0.4) 65%, rgba(0, 0, 0, 0.4) 75%, rgba(0, 0, 0, 0.25));
+
+}
+
+.close image,
+.minimize image,
+.maximize image {
+    background: radial-gradient(73.84% 80% at 50% 80%, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 100%);
+    box-shadow: inset 0px -1px rgba(255, 255, 255, 0.15), 0px 1px 0.2px 0px #00000036 inset;
+    transition: background ease 0.3s;
+}
+
+.close:hover image,
+.minimize:hover image,
+.maximize:hover image {
+    background: radial-gradient(73.84% 80% at 50% 80%, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 100%), radial-gradient(at bottom center, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.1) 50%);
+}
+
+.org-gnome-TextEditor .top-bar {
+    background: linear-gradient(180deg, #927558 1.28%, #816346 6.96%), linear-gradient(180deg, rgba(0, 0, 0, 0.47) -3.54%, rgba(153, 153, 153, 0.47) -2.18%, rgba(217, 217, 217, 0.47) 1.55%, rgba(166, 166, 166, 0.47) 3.46%, rgba(153, 153, 153, 0.47) 5.56%, rgba(232, 232, 232, 0.47) 8.14%);
+    box-shadow: inset 0px -6px 4px -2px rgba(255, 255, 255, 0.25), inset 0px -4px 4px -2px darker(#927558), 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
+    color: white;
+}
+
+.org-gnome-TextEditor .top-bar .image-button:not(.close):not(.minimize):not(.maximize),
+.org-gnome-TextEditor .top-bar .toggle {
+    background: radial-gradient(64.67% 75% at 50% 25%, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%), linear-gradient(180deg, rgba(0, 0, 0, 0.0881821) -38.89%, rgba(0, 0, 0, 0.064) -11.38%, rgba(0, 0, 0, 0.119727) 14.82%, rgba(0, 0, 0, 0.2) 50.46%, rgba(0, 0, 0, 0.2) 68.72%, rgba(0, 0, 0, 0.14) 95.35%);
+    border-radius: 6px;
+}

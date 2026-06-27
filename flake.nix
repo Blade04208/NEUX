@@ -20,6 +20,7 @@
   };
   outputs =
     {
+      vicinae,
       self,
       nixpkgs,
       home-manager,
@@ -38,7 +39,10 @@
         extraSpecialArgs = { inherit username; };
       };
 
-      homeManagerModules.default = ./home/default.nix;
+      homeManagerModules.default = [
+        vicinae.homeManagerModules.default
+        ./home/default.nix
+      ];
 
       # system-wide stuff
       nixosModules.default = ./system/default.nix;
