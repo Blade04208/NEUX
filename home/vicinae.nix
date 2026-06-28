@@ -1,5 +1,4 @@
 {
-  inputs,
   pkgs,
   config,
   lib,
@@ -15,15 +14,7 @@
       #   USE_LAYER_SHELL = 1;
       # };
     };
-    # Extensions installed declaratively.
-    # IMPORTANT: when installed this way, vicinae assigns provider keys in the
-    # format "@author/name-0" rather than "@author/store.vicinae.name".
-    extensions = with inputs.vicinae-extensions.packages.${pkgs.stdenv.hostPlatform.system}; [
-      bluetooth # provider key: "@Gelei/bluetooth-0"  (is "@Gelei/store.vicinae.bluetooth" in config)
-      nix # provider key: "@knoopx/nix-0"        (is "@knoopx/store.vicinae.nix" in config)
-      wifi-commander
-      power-profile
-    ];
+
 
     settings = {
       close_on_focus_loss = false;
