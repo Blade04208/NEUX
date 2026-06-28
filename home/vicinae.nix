@@ -1,7 +1,5 @@
 {
-  pkgs,
-  config,
-  lib,
+  username,
   ...
 }:
 {
@@ -14,7 +12,6 @@
       #   USE_LAYER_SHELL = 1;
       # };
     };
-
 
     settings = {
       close_on_focus_loss = false;
@@ -70,13 +67,13 @@
             defaultAction = "focus";
             launchPrefix = "";
             paths = [
-              "/home/blade0/.local/share/applications"
-              "/home/blade0/.local/share/flatpak/exports/share/applications"
+              "/home/${username}/.local/share/applications"
+              "/home/${username}/.local/share/flatpak/exports/share/applications"
               "/var/lib/flatpak/exports/share/applications"
-              "/home/blade0/.nix-profile/share/applications"
+              "/home/${username}/.nix-profile/share/applications"
               "/nix/profile/share/applications"
-              "/home/blade0/.local/state/nix/profile/share/applications"
-              "/etc/profiles/per-user/blade0/share/applications"
+              "/home/${username}/.local/state/nix/profile/share/applications"
+              "/etc/profiles/per-user/${username}/share/applications"
               "/nix/var/nix/profiles/default/share/applications"
               "/run/current-system/sw/share/applications"
             ];

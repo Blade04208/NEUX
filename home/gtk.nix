@@ -33,17 +33,17 @@
     };
   };
 
-  # home.pointerCursor = {
-  #   name = "Adwaita";
-  #   size = 24;
-  #   gtk.enable = true;
-  #   x11.enable = true;
-  # };
+  home.pointerCursor = {
+    name = "Adwaita";
+    size = 24;
+    gtk.enable = true;
+    x11.enable = true;
+    package = pkgs.adwaita-icon-theme;
+  };
 
   dconf.settings = {
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
-      accent-color = "purple";
       icon-theme = "NEUX";
       font-name = "Fira Sans 11";
       document-font-name = "Fira Sans 11";
