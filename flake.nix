@@ -52,6 +52,9 @@
           wifi-commander
           power-profile
         ];
+      environment.systemPackages = [
+        inputs.nimbus.packages.${system}.nimbus
+      ];
 
       homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;

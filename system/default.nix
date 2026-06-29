@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ pkgs, ... }:
 {
   programs.hyprland = {
     enable = true;
@@ -30,7 +30,6 @@
     # styling - fira
     fira-sans
     nerd-fonts.fira-mono
-    inputs.nimbus.packages.${system}.nimbus
   ];
 
   services.gnome.gnome-keyring.enable = true;

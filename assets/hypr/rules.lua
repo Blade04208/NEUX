@@ -9,8 +9,8 @@
 
 local suppressMaximizeRule = hl.window_rule({
     -- Ignore maximize requests from all apps. You'll probably like this.
-    name  = "suppress-maximize-events",
-    match = { class = ".*" },
+    name           = "suppress-maximize-events",
+    match          = { class = ".*" },
 
     suppress_event = "maximize",
 })
@@ -18,8 +18,8 @@ local suppressMaximizeRule = hl.window_rule({
 
 hl.window_rule({
     -- Fix some dragging issues with XWayland
-    name  = "fix-xwayland-drags",
-    match = {
+    name     = "fix-xwayland-drags",
+    match    = {
         class      = "^$",
         title      = "^$",
         xwayland   = true,
@@ -67,17 +67,17 @@ hl.layer_rule({
 
 -- Blur swaync notification center
 hl.layer_rule({
-  match = { namespace = "swaync-control-center" },
-  blur = true,
-  ignore_alpha = 0,
-      no_anim = true
+    match = { namespace = "swaync-control-center" },
+    blur = true,
+    ignore_alpha = 0,
+    no_anim = true
 })
 
 -- Blur swaync notification popups
 hl.layer_rule({
-  match = { namespace = "swaync-notification-window" },
-  blur = true,
-  ignore_alpha = 0,
+    match = { namespace = "swaync-notification-window" },
+    blur = true,
+    ignore_alpha = 0,
     no_anim = true
 })
 
@@ -88,11 +88,11 @@ hl.layer_rule({
 })
 
 hl.window_rule({
-  name = "satty-fullscreen",
-  match = {
-    class = "satty"
-  },
-  fullscreen = true,
-  no_anim = true,
-  float = true
+    name = "satty-fullscreen",
+    match = {
+        class = "satty"
+    },
+    fullscreen = true,
+    no_anim = true,
+    float = true
 })

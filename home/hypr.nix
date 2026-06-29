@@ -11,6 +11,14 @@ let
   '';
 in
 {
+
+  xdg.configFile."hypr/hyprland.lua".force = true;
+  xdg.configFile."hypr/binds.lua".force = true;
+  xdg.configFile."hypr/decor.lua".force = true;
+  xdg.configFile."hypr/execs.lua".force = true;
+  xdg.configFile."hypr/rules.lua".force = true;
+  xdg.configFile."hypr/hyprlock.conf".force = true;
+
   xdg.configFile."hypr/hyprland.lua".source = ../assets/hypr/hyprland.lua;
   xdg.configFile."hypr/binds.lua".source = ../assets/hypr/binds.lua;
   xdg.configFile."hypr/decor.lua".source = ../assets/hypr/decor.lua;

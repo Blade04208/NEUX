@@ -1,4 +1,3 @@
-
 -- You can (and should!!) split this configuration into multiple files
 -- Create your files separately and then require them like this:
 -- require("myColors")
@@ -24,13 +23,13 @@ hl.config({
         smart_split = true,
     },
 
--- See https://wiki.hypr.land/Configuring/Layouts/Master-Layout/ for more
+    -- See https://wiki.hypr.land/Configuring/Layouts/Master-Layout/ for more
 
     master = {
         new_status = "master",
     },
 
--- See https://wiki.hypr.land/Configuring/Layouts/Scrolling-Layout/ for more
+    -- See https://wiki.hypr.land/Configuring/Layouts/Scrolling-Layout/ for more
 
     scrolling = {
         fullscreen_on_one_column = true,
@@ -45,11 +44,11 @@ hl.config({
 
 hl.config({
     input = {
-        kb_layout  = "gb",
+        kb_layout    = "gb",
         follow_mouse = 1,
-        sensitivity = 0, -- -1.0 - 1.0, 0 means no modification.
+        sensitivity  = 0, -- -1.0 - 1.0, 0 means no modification.
 
-        touchpad = {
+        touchpad     = {
             natural_scroll = true,
         },
     },
