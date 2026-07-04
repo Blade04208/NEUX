@@ -41,6 +41,7 @@
       homeManagerModules.default = { pkgs, ... }: {
         imports = [
           inputs.vicinae.homeManagerModules.default
+          inputs.ironbar.homeManagerModules.default
           ./home/default.nix
         ];
       };

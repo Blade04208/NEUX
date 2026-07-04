@@ -62,5 +62,4 @@
   };
 
   systemd.services.swayosd-libinput-backend.enable = true;
-
 }
