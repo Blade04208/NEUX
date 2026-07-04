@@ -5,8 +5,8 @@
   programs.vicinae = {
     enable = true;
     systemd = {
-      enable = true;
-      autoStart = true;
+      enable = false;
+      autoStart = false;
       # environment = {
       #   USE_LAYER_SHELL = 1;
       # };
