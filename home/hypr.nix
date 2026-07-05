@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 let
   WallpaperDefault = pkgs.writeText "hyprpaper.conf" ''
@@ -12,19 +12,21 @@ let
 in
 {
 
-  xdg.configFile."hypr/hyprland.lua".force = true;
-  xdg.configFile."hypr/binds.lua".force = true;
-  xdg.configFile."hypr/decor.lua".force = true;
-  xdg.configFile."hypr/execs.lua".force = true;
-  xdg.configFile."hypr/rules.lua".force = true;
-  xdg.configFile."hypr/hyprlock.conf".force = true;
+  xdg.configFile =
+    lib.genAttrs
+      [
+        "hypr/hyprland.lua"
+        "hypr/binds.lua"
+        "hypr/decor.lua"
+        "hypr/execs.lua"
+        "hypr/rules.lua"
+        "hypr/hyprlock.conf"
+      ]
+      (name: {
+        force = true;
+        source = ../assets + "/${name}";
+      });
 
-  xdg.configFile."hypr/hyprland.lua".source = ../assets/hypr/hyprland.lua;
-  xdg.configFile."hypr/binds.lua".source = ../assets/hypr/binds.lua;
-  xdg.configFile."hypr/decor.lua".source = ../assets/hypr/decor.lua;
-  xdg.configFile."hypr/execs.lua".source = ../assets/hypr/execs.lua;
-  xdg.configFile."hypr/rules.lua".source = ../assets/hypr/rules.lua;
-  xdg.configFile."hypr/hyprlock.conf".source = ../assets/hypr/hyprlock.conf;
   systemd.user.tmpfiles.rules = [
     "f %h/.config/hypr/hyprpaper.conf 0644 - - - ${WallpaperDefault}"
     "f %h/.config/hypr/custom.lua 0755 - - - -"
