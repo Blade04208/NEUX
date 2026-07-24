@@ -65,17 +65,6 @@
           preferences = {
             defaultAction = "focus";
             launchPrefix = "";
-            paths = [
-              "$HOME/.local/share/applications"
-              "$HOME/.local/share/flatpak/exports/share/applications"
-              "/var/lib/flatpak/exports/share/applications"
-              "$HOME/.nix-profile/share/applications"
-              "/nix/profile/share/applications"
-              "$HOME/.local/state/nix/profile/share/applications"
-              "/etc/profiles/per-user/blade0/share/applications"
-              "/nix/var/nix/profiles/default/share/applications"
-              "/run/current-system/sw/share/applications"
-            ];
           };
         };
 
@@ -147,9 +136,6 @@
         files = {
           preferences = {
             autoIndexing = true;
-            excludedPaths = "/home/blade0/.cache";
-            paths = "/home/blade0";
-            watcherPaths = "";
           };
           entrypoints = {
             "rebuild-index" = {

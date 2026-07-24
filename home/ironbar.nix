@@ -38,8 +38,8 @@
                     on_click = "!vicinae toggle";
                     widgets = [
                       {
-                        type = "label";
-                        label = "<span font-family='Fira Mono Nerd Font'> </span>";
+                        type = "image";
+                        src = "icon:system-search-symbolic";
                       }
                     ];
                   }
@@ -307,7 +307,6 @@
                   }
                 ];
               }
-
               {
                 type = "custom";
                 class = "music";
@@ -326,13 +325,13 @@
                         widgets = [
                           {
                             type = "label";
-                            label = "{{poll:500:/home/blade0/.config/NEUX/mpris.sh title}}";
+                            label = "{{watch:/home/blade0/.config/NEUX/mpris.sh title}}";
                             justify = "right";
                             class = "bold";
                           }
                           {
                             type = "label";
-                            label = "{{poll:500:/home/blade0/.config/NEUX/mpris.sh artist}}";
+                            label = "{{watch:/home/blade0/.config/NEUX/mpris.sh artist}}";
                             justify = "right";
                             class = "subtitle";
                           }
@@ -340,7 +339,7 @@
                       }
                       {
                         type = "image";
-                        src = "{{poll:500:/home/blade0/.config/NEUX/mpris.sh art}}";
+                        src = "{{watch:/home/blade0/.config/NEUX/mpris.sh art}}";
                         size = 40;
                       }
                     ];
@@ -353,22 +352,22 @@
                     widgets = [
                       {
                         type = "image";
-                        src = "{{poll:500:/home/blade0/.config/NEUX/mpris.sh art}}";
+                        src = "{{watch:/home/blade0/.config/NEUX/mpris.sh art}}";
                         size = 128;
                       }
                       {
                         type = "label";
-                        label = "{{poll:500:/home/blade0/.config/NEUX/mpris.sh title}}";
+                        label = "{{watch:/home/blade0/.config/NEUX/mpris.sh title}}";
                         class = "title";
                       }
                       {
                         type = "label";
-                        label = "{{poll:500:/home/blade0/.config/NEUX/mpris.sh artist}}";
+                        label = "{{watch:/home/blade0/.config/NEUX/mpris.sh artist}}";
                         class = "subtitle";
                       }
                       {
                         type = "label";
-                        label = "{{poll:500:/home/blade0/.config/NEUX/mpris.sh album}}";
+                        label = "{{watch:/home/blade0/.config/NEUX/mpris.sh album}}";
                         class = "subtitle";
                       }
                       {
@@ -406,5 +405,10 @@
         ];
       };
     };
+    style = builtins.readFile ./assets/ironbar.css;
+  };
+  xdg.configFile."ironbar" = {
+    source = ./assets/ironbar;
+    recursive = true;
   };
 }

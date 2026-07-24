@@ -28,7 +28,6 @@
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-      username = "blade0";
     in
     {
 
@@ -53,21 +52,5 @@
           wifi-commander
           power-profile
         ];
-      environment.systemPackages = [
-        inputs.nimbus.packages.${system}.nimbus
-      ];
-
-      homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [
-          self.homeManagerModules.default
-          {
-            home.username = username;
-            home.homeDirectory = "/home/${username}";
-            home.stateVersion = "26.05";
-            programs.home-manager.enable = true;
-          }
-        ];
-      };
     };
 }

@@ -1,0 +1,393 @@
+#apps-btn {
+    transition: filter ease 0.1s
+}
+
+#apps-btn:active {
+    filter: brightness(0.75)
+}
+
+#apps-btn:hover {
+    filter: brightness(1.5)
+}
+
+#bottom-bar {
+    background: linear-gradient(#28282833, #28282833), linear-gradient(to top, #00000080, #0003);
+    border-top: 1px solid #0006;
+    box-shadow: inset 0 1px 0 0 #ffffff14
+}
+
+#left-bar {
+    background: linear-gradient(#28282833, #28282833), linear-gradient(to top, #00000080, #0003);
+    border-right: 1px solid #0006;
+    box-shadow: inset -1px 0px 0 0 #ffffff14;
+    padding-top: 10px;
+}
+
+#left-bar #apps-btn {
+    margin: 0 0 10px 0;
+    transform: scale(1.125);
+    transition: filter ease .1s
+}
+
+#left-bar .separator {
+    margin: -20px 0
+}
+
+#left-bar .separator picture {
+    transform: rotate(90deg) translate(-5px, -30px)
+}
+
+#left-bar .launcher:not(.launcher-favs) .item.favorite,
+#left-bar .launcher-favs .item:not(.favorite) {
+    margin-top: -42px;
+    opacity: 1;
+    transform: scale(0)
+}
+
+#power-btn {
+    margin: 2px 0;
+    box-shadow: inset 0 0 0 1px #ffffff14, 0 2px 4px #0000004d;
+    border-radius: 50%;
+}
+
+#power-btn picture {
+    border-radius: 20px
+}
+
+#top-bar {
+    padding-bottom: 4px
+}
+
+#top-bar #end>* {
+    margin-left: 5px
+}
+
+#top-bar #start>* {
+    margin-right: 7.5px
+}
+
+#top-bar .widget.network_manager {
+    background: linear-gradient(#28282833, #28282833), linear-gradient(#0003, #0003), linear-gradient(#0000001a, #50505000);
+    border: 1px solid #0006;
+    border-radius: 200px;
+    border-radius: 23px;
+    box-shadow: inset 0 1px 0 0px #ffffff14, 0 2px 4px #0000004d;
+    color: #fff;
+    font-weight: 500;
+    padding: 0 5px;
+    transition: all ease .3s
+}
+
+#top-bar .widget:not(.custom):not(.workspaces):not(.focused):not(.tray):not(.network_manager),
+#top-bar .custom:not(.power-menu) button:not(#tray-btn) {
+    background: linear-gradient(#28282833, #28282833), linear-gradient(#0003, #0003), linear-gradient(#0000001a, #50505000);
+    border: 1px solid #0006;
+    border-radius: 200px;
+    border-radius: 23px;
+    box-shadow: inset 0 1px 0 0px #ffffff14, 0 2px 4px #0000004d;
+    color: #fff;
+    font-weight: 500;
+    padding: 0 10px;
+    transition: all ease .3s
+}
+
+#top-bar .widget:not(.custom):not(.workspaces):not(.tray):hover,
+.tray .item:hover,
+.workspaces .item:hover,
+#top-bar .custom:not(.power-menu) button,
+#top-bar .widget:not(.custom):not(.workspaces):not(.tray):active,
+.tray .item:active,
+.workspaces .item:active,
+#top-bar .custom:not(.power-menu) button {
+    background: linear-gradient(#28282833, #28282833), linear-gradient(#0003, #0003), linear-gradient(#0000001a, #50505000), linear-gradient(#ffffff1a, #ffffff0d)
+}
+
+#trash-btn:active {
+    padding-bottom: 0;
+    padding-top: 2px
+}
+
+#trash-btn:hover {
+    padding-bottom: 5px
+}
+
+#vicinae-btn picture {
+    margin: 0px 1px;
+    transform: scale(0.5);
+}
+
+* {
+    all: unset;
+    font-family: 'Fira Sans';
+    font-size: 14px;
+    font-style: normal;
+    text-shadow: 0 2px 2px #00000040
+}
+
+.bold {
+    font-weight: 450
+}
+
+.calendar-clock {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 36px
+}
+
+.clock>label {
+    padding: 0 7.5px
+}
+
+.item.open {
+    background-image: url(data:image/svg+xml,%3Csvg%20fill%3D%22none%22%20viewBox%3D%220%200%2015%208%22%3E%3Cg%20filter%3D%22url%28%23a%29%22%20shape-rendering%3D%22crispEdges%22%3E%3Cuse%20href%3D%22%23b%22%20style%3D%22mix-blend-mode%3Asoft-light%22%2F%3E%3Cuse%20fill-opacity%3D%22.74%22%20href%3D%22%23b%22%20style%3D%22mix-blend-mode%3Aplus-lighter%22%2F%3E%3Cpath%20fill%3D%22url%28%23c%29%22%20fill-opacity%3D%22.1%22%20d%3D%22M6.75%204.34a1%201%200%200%201%201.5%200L11%207.48H4z%22%2F%3E%3C%2Fg%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22c%22%20x1%3D%227.5%22%20x2%3D%227.5%22%20y1%3D%223.48%22%20y2%3D%227.48%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%3Cstop%20offset%3D%22.67%22%20stop-opacity%3D%220%22%2F%3E%3Cstop%20offset%3D%221%22%2F%3E%3C%2FlinearGradient%3E%3Cfilter%20id%3D%22a%22%20width%3D%2215%22%20height%3D%2211.48%22%20x%3D%220%22%20y%3D%220%22%20color-interpolation-filters%3D%22sRGB%22%20filterUnits%3D%22userSpaceOnUse%22%3E%3CfeFlood%20flood-opacity%3D%220%22%20result%3D%22BackgroundImageFix%22%2F%3E%3CfeColorMatrix%20in%3D%22SourceAlpha%22%20result%3D%22hardAlpha%22%20values%3D%220%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%20127%200%22%2F%3E%3CfeOffset%2F%3E%3CfeGaussianBlur%20stdDeviation%3D%22.95%22%2F%3E%3CfeComposite%20in2%3D%22hardAlpha%22%20operator%3D%22out%22%2F%3E%3CfeColorMatrix%20values%3D%220%200%200%200%201%200%200%200%200%201%200%200%200%200%201%200%200%200%201%200%22%2F%3E%3CfeBlend%20in2%3D%22BackgroundImageFix%22%20mode%3D%22overlay%22%20result%3D%22effect1_dropShadow_2012_9%22%2F%3E%3CfeColorMatrix%20in%3D%22SourceAlpha%22%20result%3D%22hardAlpha%22%20values%3D%220%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%20127%200%22%2F%3E%3CfeOffset%2F%3E%3CfeGaussianBlur%20stdDeviation%3D%222%22%2F%3E%3CfeComposite%20in2%3D%22hardAlpha%22%20operator%3D%22out%22%2F%3E%3CfeColorMatrix%20values%3D%220%200%200%200%201%200%200%200%200%201%200%200%200%200%201%200%200%200%201%200%22%2F%3E%3CfeBlend%20in2%3D%22effect1_dropShadow_2012_9%22%20mode%3D%22overlay%22%20result%3D%22effect2_dropShadow_2012_9%22%2F%3E%3CfeColorMatrix%20in%3D%22SourceAlpha%22%20result%3D%22hardAlpha%22%20values%3D%220%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%20127%200%22%2F%3E%3CfeOffset%2F%3E%3CfeGaussianBlur%20stdDeviation%3D%221.95%22%2F%3E%3CfeComposite%20in2%3D%22hardAlpha%22%20operator%3D%22out%22%2F%3E%3CfeColorMatrix%20values%3D%220%200%200%200%201%200%200%200%200%201%200%200%200%200%201%200%200%200%201%200%22%2F%3E%3CfeBlend%20in2%3D%22effect2_dropShadow_2012_9%22%20mode%3D%22overlay%22%20result%3D%22effect3_dropShadow_2012_9%22%2F%3E%3CfeBlend%20in%3D%22SourceGraphic%22%20in2%3D%22effect3_dropShadow_2012_9%22%20result%3D%22shape%22%2F%3E%3C%2Ffilter%3E%3Cpath%20id%3D%22b%22%20fill%3D%22%23fff%22%20d%3D%22M6.75%204.34a1%201%200%200%201%201.5%200L11%207.48H4z%22%2F%3E%3C%2Fdefs%3E%3C%2Fsvg%3E);
+    background-position: bottom center;
+    background-repeat: no-repeat
+}
+
+.launcher .item,
+#trash-btn,
+#apps-btn {
+    min-width: 42px;
+    transition: padding ease-out 0.2s, transform ease-out .2s
+}
+
+.launcher .item:active {
+    padding-bottom: 0
+}
+
+.launcher .item:hover {
+    padding-bottom: 10px;
+    transform: scale(1.125)
+}
+
+#bottom-bar .launcher:not(.launcher-favs) .item.favorite,
+#bottom-bar .launcher-favs .item:not(.favorite) {
+    margin-left: -42px;
+    opacity: 0;
+    transform: scale(0)
+}
+
+.music button {
+    transition: all .3s ease
+}
+
+.music button:hover {
+    background: radial-gradient(at bottom right, #fff3, #ffffff1a, #fff0 60%);
+    box-shadow: inset 0 1px 1px -1px #fff;
+    filter: saturate(0.9) brightness(1.1)
+}
+
+.music picture {
+    border: 1px solid #0000004d;
+    border-radius: 2px;
+    box-shadow: 0 .7px .3px .7px #FFFFFF52 inset;
+    margin: 12px;
+    transform: scale(1.25) rotate(1.88deg)
+}
+
+.popup-battery,
+tooltip {
+    padding: 10px
+}
+
+.separator {
+    margin: 0 7px
+}
+
+.subtitle {
+    font-size: 13px;
+    font-weight: 450;
+    margin-top: 2px;
+    opacity: .7;
+    text-transform: uppercase
+}
+
+.title-art {
+    font-size: 0
+}
+
+.tray .item {
+    background: linear-gradient(#28282833, #28282833), linear-gradient(#0003, #0003), linear-gradient(#0000001a, #50505000);
+    border: 1px solid #0006;
+    border-radius: 200px;
+    border-radius: 23px;
+    box-shadow: inset 0 1px 0 0px #ffffff14, 0 2px 4px #0000004d;
+    color: #fff;
+    font-weight: 500;
+    margin: 2.5px 3px;
+    padding: 0 7.5px;
+    transition: all ease .3s
+}
+
+.tray popover modelbutton {
+    border-bottom: 1px solid #0006;
+    box-shadow: inset 0 -1px 0 0 #ffffff14;
+    padding: 5px 10px
+}
+
+.weather {
+    padding: 0 7.5px 0 12.5px;
+    transition: none
+}
+
+.widget.focused {
+    background: linear-gradient(#28282833, #28282833), linear-gradient(#0003, #0003), linear-gradient(#0000001a, #50505000);
+    border-radius: 200px;
+    border-radius: 23px;
+    box-shadow: inset 0 2px 0 0px #ffffff14, inset 0 0 0 1px #0006, 0 2px 4px #0000004d;
+    color: #fff;
+    font-weight: 500;
+    padding: 0;
+    transition: all ease .3s
+}
+
+.popup-music {
+    padding: 5px 10px;
+}
+
+.popup-music picture {
+    margin: 25px;
+}
+
+.popup-music .title {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.popup-music box {
+    padding: 2px;
+
+}
+
+.popup-music .music-btn {
+    padding: 5px 15px;
+}
+
+.popup-music .music-btn label {
+    font-size: 24px;
+}
+
+.widget.focused .icon {
+    margin-left: 8px;
+    margin-right: -3px;
+    margin-top: -1px;
+    transform: scale(0.6)
+}
+
+.widget.focused .label {
+    margin-right: 15px
+}
+
+.workspaces {
+    background: linear-gradient(#28282833, #28282833), linear-gradient(#0003, #0003), linear-gradient(#0000001a, #50505000);
+    border: 1px solid #0006;
+    border-radius: 200px;
+    border-radius: 23px;
+    box-shadow: inset 0 1px 0 0px #ffffff14, 0 2px 4px #0000004d;
+    color: #ffffffb3;
+    font-weight: 500;
+    padding: 0 4px;
+    transition: all ease .3s
+}
+
+.workspaces .item {
+    border-radius: 14px;
+    margin: 3px 0;
+    padding: .5px 9.5px 0 10.5px;
+    transition: all ease .3s;
+    min-width: 9px;
+}
+
+.workspaces .item.focused {
+    background: radial-gradient(73.84% 80% at 50% 80%, #0000 0%, #000000b3 100%);
+    box-shadow: inset 0 -1px #ffffff26 0 1px .2px 0 #00000036 inset;
+    color: #fff
+}
+
+button#tray-btn {
+    background: linear-gradient(#28282833, #28282833), linear-gradient(#0003, #0003), linear-gradient(#0000001a, #50505000);
+    border: 1px solid #0006;
+    border-radius: 200px;
+    border-radius: 23px;
+    box-shadow: inset 0 1px 0 0px #ffffff14, 0 2px 4px #0000004d;
+    color: #fff;
+    font-weight: 500;
+    margin: 4px 3px;
+    min-width: 0px;
+    padding: 5px 7px;
+    transition: all ease .3s
+}
+
+calendar grid {
+    padding: 5px
+}
+
+calendar grid .today {
+    background: radial-gradient(73.84% 80% at 50% 80%, #0000 0%, #000000b3 100%);
+    box-shadow: inset 0 -1px #ffffff26 0 1px .2px 0 #00000036 inset;
+    color: #fff;
+    font-weight: 700
+}
+
+calendar grid>* {
+    border-radius: 20px;
+    color: #ffffffbf;
+    font-weight: 450;
+    margin: 0 3px;
+    padding: 8px 0
+}
+
+calendar grid>.day-name {
+    color: #ffffff80;
+    font-weight: 500
+}
+
+calendar grid>.day-number:hover,
+.workspaces .item.focused:hover,
+.workspaces .item:hover {
+    background: radial-gradient(73.84% 80% at 50% 80%, #0000 0%, #000000b3 100%), radial-gradient(at bottom center, #ffffff40, #ffffff1a 50%)
+}
+
+calendar grid>.other-month {
+    color: #ffffff80
+}
+
+calendar header {
+    border-top: 1px solid #0006;
+    box-shadow: inset 0 1px 0 0 #ffffff14;
+    padding: 10px
+}
+
+image.icon {
+    transform: scale(0.8)
+}
+
+popover:not(.menu),
+tooltip,
+.tray popover contents {
+    background: linear-gradient(#28282833, #28282833), linear-gradient(#0003, #0003), linear-gradient(#0000001a, #50505000);
+    border: 1px solid #0006;
+    border-radius: 10px;
+    box-shadow: inset 0 0 0 1px #ffffff14, 0 2px 4px #0000004d;
+}
+
+scale>trough,
+switch:not(:checked) {
+    background-color: blue
+}
+
+scale>trough>highlight {
+    background-color: red;
+    border-color: red;
+    border-style: solid;
+    border-width: .2em
+}
+
+scale>trough>slider,
+switch>slider {
+    background-color: #fff
+}
+
+switch:checked {
+    background-color: red
+}
