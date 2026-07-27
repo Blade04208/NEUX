@@ -7,7 +7,7 @@
     ./hypr.nix
   ];
   xdg.configFile."NEUX" = {
-    source = ./assets/neux;
+    source = ../assets/neux;
     recursive = true;
   };
 }
