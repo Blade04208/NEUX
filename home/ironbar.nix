@@ -1,17 +1,8 @@
-{ config, lib, ... }:
+{ config, ... }:
 let
   cfg = config.neux;
 in
 {
-  options.neux.favorites = lib.mkOption {
-    type = lib.types.listOf lib.types.str;
-    default = [
-      "app.zen_browser.zen"
-      "org.gnome.Nautilus"
-      "org.gnome.Ptyxis"
-    ];
-    description = "Favourite items pinned to the Base Bar. Apps should be defined by their domain name (e.g \"org.mozilla.Firefox\").";
-  };
   config = {
     programs.ironbar = {
       enable = true;
