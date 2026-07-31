@@ -1,13 +1,14 @@
 { ... }:
 {
   imports = [
+    ./options.nix
     ./gtk.nix
     ./vicinae.nix
     ./ironbar.nix
-    ./hypr.nix
+    ./wm
   ];
   xdg.configFile."NEUX" = {
-    source = ../assets/neux;
+    source = ./assets/neux;
     recursive = true;
   };
 }

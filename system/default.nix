@@ -1,10 +1,9 @@
 { pkgs, ... }:
 {
-  programs.hyprland = {
-    enable = true;
-    withUWSM = true;
-    xwayland.enable = true;
-  };
+  imports = [
+    ./bridge.nix
+    ./wm
+  ];
 
   environment.systemPackages = with pkgs; [
     # backup apps - kitty
@@ -16,11 +15,6 @@
     vicinae
     brightnessctl
     swayosd
-    # hyprutils
-    hyprpolkitagent
-    hyprpaper
-    hyprpicker
-    hyprlock
     # screenshots
     grim
     slurp
@@ -37,20 +31,9 @@
   xdg.portal = {
     enable = true;
     extraPortals = [
-      pkgs.xdg-desktop-portal-hyprland
       pkgs.xdg-desktop-portal-gnome
       pkgs.xdg-desktop-portal-gtk
     ];
-    config = {
-      hyprland.default = [
-        "hyprland"
-        "gtk"
-      ];
-      gnome.default = [
-        "gnome"
-        "gtk"
-      ];
-    };
   };
 
   environment.sessionVariables = {

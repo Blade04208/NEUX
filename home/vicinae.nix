@@ -1,9 +1,16 @@
 {
+  vicinaeExtensions,
   ...
 }:
 {
   programs.vicinae = {
     enable = true;
+    extensions = with vicinaeExtensions; [
+      bluetooth
+      nix
+      wifi-commander
+      power-profile
+    ];
     systemd = {
       enable = false;
       autoStart = false;

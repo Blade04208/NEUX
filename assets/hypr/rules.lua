@@ -40,26 +40,22 @@ hl.window_rule({
 -- overlayLayerRule:set_enabled(false)
 
 -- Hyprland-run windowrule
-
-hl.window_rule({ match = { class = "xdg-desktop-portal-gtk" }, workspace = "e+0", float = true, center = true })
-hl.window_rule({ match = { class = "GTK Application" }, workspace = "e+0", float = true, center = true })
-
 hl.window_rule({
     name  = "move-hyprland-run",
     match = { class = "hyprland-run" },
     move  = "20 monitor_h-120",
     float = true,
 })
-hl.window_rule({
-    name = "nimbus",
-    match = { class = "io.github.danirabbit.nimbus" },
-    float = true,
-    move = "10 monitor_h-300",
-    persistent_size = true,
-    size = "1000, 300"
-})
+
 hl.layer_rule({
     match = { namespace = "ironbar" },
+    blur = true,
+    blur_popups = true,
+    ignore_alpha = 0.3,
+})
+
+hl.layer_rule({
+    match = { namespace = "swayosd" },
     blur = true,
     blur_popups = true,
     ignore_alpha = 0.3,

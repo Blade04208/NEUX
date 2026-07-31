@@ -5,7 +5,7 @@ require("binds")
 require("decor")
 require("execs")
 require("rules")
-
+require("custom")
 ------------------
 ---- MONITORS ----
 ------------------

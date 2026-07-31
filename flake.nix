@@ -43,14 +43,9 @@
           inputs.ironbar.homeManagerModules.default
           ./home/default.nix
         ];
-      };
 
-      programs.vicinae.extensions =
-        with inputs.vicinae-extensions.packages.${pkgs.stdenv.hostPlatform.system}; [
-          bluetooth
-          nix
-          wifi-commander
-          power-profile
-        ];
+        _module.args.vicinaeExtensions =
+          inputs.vicinae-extensions.packages.${pkgs.stdenv.hostPlatform.system};
+      };
     };
 }
