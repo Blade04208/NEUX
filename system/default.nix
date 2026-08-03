@@ -23,7 +23,7 @@
     wl-clip-persist
     # styling - fira
     fira-sans
-    nerd-fonts.fira-mono
+    nerd-fonts.fira-code
   ];
 
   services.gnome.gnome-keyring.enable = true;

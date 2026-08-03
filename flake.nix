@@ -16,7 +16,12 @@
     };
     vicinae.url = "github:vicinaehq/vicinae";
     vicinae-extensions.url = "github:vicinaehq/extensions";
-    nimbus.url = "github:Blade04208/nimbus";
+    hyprland.url = "github:hyprwm/Hyprland";
+
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland";
+    };
   };
   outputs =
     {
@@ -44,8 +49,12 @@
           ./home/default.nix
         ];
 
+        _module.args.hyprlandPlugins =
+          inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system};
+
         _module.args.vicinaeExtensions =
           inputs.vicinae-extensions.packages.${pkgs.stdenv.hostPlatform.system};
       };
+
     };
 }

@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 {
   config = lib.mkIf (builtins.elem "hyprland" config.neux.activeWMs) {
     programs.hyprland = {

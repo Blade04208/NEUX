@@ -1,0 +1,99 @@
+:root {
+    --mpris-album-art-icon-size: 84px;
+    --notification-icon-size: 44px;
+    font-family: 'Fira Sans', 'FiraMono Nerd Font', 'Fira Code', monospace;
+}
+
+.notification {
+    background: linear-gradient(rgba(40, 40, 40, 0.2), rgba(40, 40, 40, 0.2)), linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), linear-gradient(rgba(0, 0, 0, 0.1), rgba(80, 80, 80, 0));
+    box-shadow: inset 0px 0px 0px 1px rgba(255, 255, 255, 0.077);
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+}
+
+.summary {
+    font-family: 'FiraMono Nerd Font', 'Fira Code', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: capitalize;
+    opacity: 0.7;
+    line-height: 10px;
+    margin-top: 2px;
+    min-width: 0px;
+    padding: 2px 4px 0px;
+}
+
+.body {
+    font-family: 'Fira Sans';
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    min-width: 0px;
+    padding: 0px 4px 2px;
+}
+
+picture {
+    border-radius: 5px;
+}
+
+#control-center-window,
+.blank-window,
+.background {
+    box-shadow: none;
+}
+
+.notification-group {
+    background: transparent;
+}
+
+.notification-row {
+    transition: all ease 0.3s;
+}
+
+.collapsed.notification-group .notification-row:not(:last-child) .notification-background {
+    filter: blur(5px) brightness(1.5) saturate(2) opacity(0.5);
+}
+
+.control-center {
+    border-radius: 15px 0px 0px 15px;
+    background: linear-gradient(rgba(40, 40, 40, 0.2), rgba(40, 40, 40, 0.2)), linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), linear-gradient(rgba(0, 0, 0, 0.1), rgba(80, 80, 80, 0));
+    box-shadow: inset 0px 0px 0px 1px rgba(255, 255, 255, 0.077);
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    font-weight: 500;
+    color: white;
+    transition: all ease 0.3s;
+    animation: slide-in 0.3s ease 0s 1 normal;
+}
+
+@keyframes slide-in {
+    0% {
+        margin-left: 500px;
+        margin-right: -500px;
+        opacity: 0;
+    }
+
+    100% {
+        margin-right: 0px;
+        opacity: 1;
+    }
+}
+
+.widget-mpris carousel,
+.widget-mpris-player {
+    padding: 0px;
+    margin: -5px -5px 0px;
+}
+
+.mpris-overlay>box:last-child {
+    margin-top: -5px;
+    /* margin-left: 300px; */
+}
+
+
+.notification-alt-actions {
+    margin-left: 44px;
+}
+
+button {
+    border-radius: 5px;
+}

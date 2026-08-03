@@ -1,4 +1,10 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  hyprlandPlugins,
+  ...
+}:
 
 let
   cfg = config.neux;
@@ -32,5 +38,9 @@ in
       "f %h/.config/hypr/hyprpaper.conf 0644 - - - ${WallpaperDefault}"
       "f %h/.config/hypr/custom.lua 0755 - - - -"
     ];
+
+    wayland.windowManager.hyprland.plugins = [
+        hyprlandPlugins.hyprbars
+      ];
   };
 }
