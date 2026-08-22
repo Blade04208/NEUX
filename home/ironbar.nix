@@ -144,7 +144,7 @@ in
             # ── BOTTOM BAR ─────────────────────────────────────────────────
             {
               position = "bottom";
-              height = 64;
+              height = 68;
               name = "bottom-bar";
 
               start = [
@@ -224,7 +224,7 @@ in
 
                 {
                   type = "launcher";
-                  icon_size = 38;
+                  icon_size = 42;
                   favorites = cfg.favorites;
                 }
 
@@ -247,7 +247,7 @@ in
                 {
                   type = "launcher";
                   class = "launcher-favs";
-                  icon_size = 38;
+                  icon_size = 42;
                   favorites = cfg.favorites;
                 }
 

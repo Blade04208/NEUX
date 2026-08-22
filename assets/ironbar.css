@@ -147,7 +147,7 @@
 .launcher .item,
 #trash-btn,
 #apps-btn {
-    min-width: 42px;
+    min-width: 47px;
     transition: padding ease-out 0.2s, transform ease-out .2s
 }
 
@@ -162,7 +162,7 @@
 
 #bottom-bar .launcher:not(.launcher-favs) .item.favorite,
 #bottom-bar .launcher-favs .item:not(.favorite) {
-    margin-left: -42px;
+    margin-left: -47px;
     opacity: 0;
     transform: scale(0)
 }

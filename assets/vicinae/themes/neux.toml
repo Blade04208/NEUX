@@ -1,0 +1,87 @@
+# This file demonstrates all available theme configuration options for Vicinae.
+# You don't need to define all of these: only override what you want to customize.
+# Undefined colors will be automatically derived from core colors or inherited from base themes.
+#
+# Check out the full documentation at https://docs.vicinae.com/theming/getting-started
+
+[meta]
+name = "NEUX Dark"
+description = "Dark theme for ZenOS Neux"
+variant = "dark"                              # "dark" | "light": impacts what icon to show in some circumstances
+inherits = "adwaita-dark"
+icon = "icons/neux.png"                 # Optional: path to theme icon (relative to the theme directory it is placed in if not an absolute path)
+
+[colors.core]
+accent = "#46afff"
+accent_foreground = "#0f1014"
+background = "#282828"
+foreground = "#e7e5e4"
+secondary_background = { name = "colors.core.background", lighter = 10 }
+border = "#595959"
+
+[colors.main_window]
+border = "#000000"
+footer = "#00ff00"
+
+[colors.settings_window]
+border = "#000000"
+
+[colors.accents]
+blue = "#45AEFF"
+green = "#54CC50"
+magenta = "#FF52EE"
+orange = "#FF9838"
+red = "#FF5757"
+yellow = "#FFE642"
+cyan = "#38E0C4"
+purple = "#C558ED"
+
+# For now, shortcuts cannot have their own dedicated background
+[colors.shortcut]
+border = "colors.core.border"
+
+[colors.text]
+default = "colors.core.foreground"
+muted = "#a8a29e"
+danger = "#ED7453"
+success = "#64ED8B"
+placeholder = "#78716c"
+selection = { background = "color.core.accent", foreground = "#ffffff" }
+
+[colors.text.links]
+default = "#13C5ED"
+visited = "#B379ED"
+
+[colors.input]
+border = "#2a241c"
+border_focus = { outline = "colors.core.accent", opacity = 0.5 }
+border_error = "#b9543b"
+
+[colors.button.primary]
+background = "#ffffff"
+foreground = "#e7e5e4"
+hover = { background = "#bb1c1d23" }
+focus = { outline = "colors.core.accent" }
+
+[colors.list.item.hover]
+foreground = "#e7e5e4"
+secondary_foreground = "#e7e5e4"
+
+[colors.list.item.selection]
+background = "#595959"
+foreground = "#e7e5e4"
+secondary_background = "#ff0000"
+secondary_foreground = "#A6A6A6"
+
+[colors.grid.item]
+background = "#00ff2a"
+hover = { outline = "#e7e5e4" }
+selection = { outline = "#e7e5e4" }
+
+[colors.scrollbars]
+background = "#2a241c"
+
+[colors.loading]
+bar = "colors.core.accent"
+spinner = "#e7e5e4"
+

@@ -1,9 +1,17 @@
-{ pkgs, ... }:
+{ config, lib, pkgs, ... }:
+let
+  caches = import ../caches.nix;
+in
 {
   imports = [
     ./bridge.nix
     ./wm
   ];
+
+  nix.settings = lib.mkIf config.neux.binaryCaches.enable {
+    extra-substituters = caches.substituters;
+    extra-trusted-public-keys = caches.trustedPublicKeys;
+  };
 
   environment.systemPackages = with pkgs; [
     # backup apps - kitty
@@ -24,6 +32,8 @@
     # styling - fira
     fira-sans
     nerd-fonts.fira-code
+    # system
+    gnome-keyring
   ];
 
   services.gnome.gnome-keyring.enable = true;

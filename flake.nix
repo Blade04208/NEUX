@@ -16,7 +16,8 @@
     };
     vicinae.url = "github:vicinaehq/vicinae";
     vicinae-extensions.url = "github:vicinaehq/extensions";
-    hyprland.url = "github:hyprwm/Hyprland";
+    # band-aid fix - pin hyprland to a specific commit so allow hyprbars to build
+    hyprland.url = "github:hyprwm/Hyprland/5751911091d2bbcd580597d489a1ec0b9dd542bd";
 
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
@@ -33,8 +34,17 @@
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
+      hyprlua = import ./home/wm/hyprland/lib.nix { lib = nixpkgs.lib; };
+      caches = import ./caches.nix;
     in
     {
+
+      nixConfig = {
+        extra-substituters = caches.substituters;
+        extra-trusted-public-keys = caches.trustedPublicKeys;
+      };
+
+      lib.hyprlua = hyprlua;
 
       nixosModules.default = { pkgs, ... }: {
         imports = [
@@ -42,12 +52,14 @@
         ];
       };
 
-      homeManagerModules.default = { pkgs, ... }: {
+      homeManagerModules.default = { lib, pkgs, ... }: {
         imports = [
           inputs.vicinae.homeManagerModules.default
           inputs.ironbar.homeManagerModules.default
           ./home/default.nix
         ];
+
+        _module.args.hyprlua = import ./home/wm/hyprland/lib.nix { inherit lib; };
 
         _module.args.hyprlandPlugins =
           inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system};

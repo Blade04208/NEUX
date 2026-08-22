@@ -6,7 +6,6 @@
   programs.vicinae = {
     enable = true;
     extensions = with vicinaeExtensions; [
-      bluetooth
       nix
       wifi-commander
       power-profile
@@ -241,4 +240,10 @@
       }; # providers
     }; # settings
   };
+  xdg.dataFile."vicinae/scripts/NEUX" = {
+    source = ../assets/vicinae/scripts/NEUX;
+    recursive = true;
+  };
+  xdg.dataFile."vicinae/themes/neux.toml".source = ../assets/vicinae/themes/neux.toml;
+  xdg.dataFile."vicinae/themes/icons/neux.png".source = ../assets/vicinae/themes/icons/neux.png;
 }
