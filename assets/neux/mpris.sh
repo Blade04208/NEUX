@@ -100,13 +100,60 @@ stream_art() {
     done
 }
 
+status_now() {
+    playerctl status 2>/dev/null || echo "Stopped"
+}
+
+fmt_time() {
+    local s="${1%%.*}"
+    s=$(printf '%s' "$s" | tr -cd '0-9')
+    : "${s:=0}"
+    s=$((10#$s))
+    printf '%d:%02d' $((s / 60)) $((s % 60))
+}
+
+position_secs() {
+    local pos
+    pos=$(playerctl position 2>/dev/null)
+    printf '%s' "${pos:-0}"
+}
+
+length_secs() {
+    local len
+    len=$(playerctl metadata mpris:length 2>/dev/null)
+    printf '%s' "$(( ${len:-0} / 1000000 ))"
+}
+
+state_icon() {
+    case "$(status_now)" in
+        Playing) echo "icon:media-playback-pause-symbolic" ;;
+        *)       echo "icon:media-playback-start-symbolic"  ;;
+    esac
+}
+
+progress_pct() {
+    local pos len
+    pos=$(position_secs)
+    len=$(length_secs)
+    if (( len > 0 )); then
+        awk -v p="$pos" -v l="$len" 'BEGIN { pct = p * 100 / l; if (pct > 100) pct = 100; if (pct < 0) pct = 0; printf "%.2f", pct }'
+    else
+        echo 0
+    fi
+}
+
 case "$1" in
-    title)  stream_field title  ;;
-    artist) stream_field artist ;;
-    album)  stream_field album  ;;
-    art)    stream_art          ;;
+    title)       stream_field title  ;;
+    artist)      stream_field artist ;;
+    album)       stream_field album  ;;
+    art)         stream_art          ;;
+    status)      status_now          ;;
+    state-icon)  state_icon          ;;
+    position)    fmt_time "$(position_secs)" ;;
+    length)      fmt_time "$(length_secs)"   ;;
+    progress)    progress_pct        ;;
     *)
-        echo "Usage: $0 {title|artist|album|art}"
+        echo "Usage: $0 {title|artist|album|art|status|state-icon|position|length|progress}"
         exit 1
         ;;
 esac

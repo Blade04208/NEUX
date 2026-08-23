@@ -1,7 +1,10 @@
 { config, lib, ... }:
 {
   options.neux.activeWMs = lib.mkOption {
-    type = lib.types.listOf (lib.types.enum [ "hyprland" ]);
+    type = lib.types.listOf (lib.types.enum [
+      "hyprland"
+      "sway"
+    ]);
     default =
       if config ? home-manager.users then
         lib.unique (

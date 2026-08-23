@@ -2,12 +2,16 @@
   config,
   pkgs,
   lib,
+  hyprlandPackage,
+  hyprlandPortalPackage,
   ...
 }:
 {
   config = lib.mkIf (builtins.elem "hyprland" config.neux.activeWMs) {
     programs.hyprland = {
       enable = true;
+      package = hyprlandPackage;
+      portalPackage = hyprlandPortalPackage;
       withUWSM = true;
       xwayland.enable = true;
     };
@@ -19,12 +23,9 @@
       hyprlock
     ];
 
-    xdg.portal = {
-      extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
-      config.hyprland.default = [
-        "hyprland"
-        "gtk"
-      ];
-    };
+    xdg.portal.config.hyprland.default = [
+      "hyprland"
+      "gtk"
+    ];
   };
 }

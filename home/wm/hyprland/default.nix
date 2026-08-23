@@ -2,7 +2,7 @@
   config,
   pkgs,
   lib,
-  hyprlandPlugins,
+  hyprlandPackage,
   ...
 }:
 
@@ -23,17 +23,13 @@ in
     ./decor.nix
     ./execs.nix
     ./rules.nix
-    ./hyprbars.nix
   ];
 
   config = lib.mkIf (cfg.wm == "hyprland") {
     wayland.windowManager.hyprland = {
       enable = true;
+      package = hyprlandPackage;
       configType = "lua";
-
-      plugins = [
-        hyprlandPlugins.hyprbars
-      ];
 
       settings = {
         monitor = lib.mkDefault [

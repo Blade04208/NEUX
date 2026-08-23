@@ -178,11 +178,14 @@
 }
 
 .music picture {
-    border: 1px solid #0000004d;
+    /*border: 1px solid #0000004d;*/
     border-radius: 2px;
-    box-shadow: 0 .7px .3px .7px #FFFFFF52 inset;
+    /*box-shadow: 0 .7px .3px .7px #FFFFFF52 inset;*/
     margin: 12px;
-    transform: scale(1.25) rotate(1.88deg)
+    transform: scale(1.25) rotate(1.88deg);
+    filter: drop-shadow(0 -0.7px .3px #FFFFFF52) 
+            drop-shadow(1px 1px #0000004d) 
+            drop-shadow(-1px -1px #0000004d) 
 }
 
 .popup-battery,
@@ -242,29 +245,61 @@ tooltip {
 }
 
 .popup-music {
-    padding: 5px 10px;
+    padding: 16px 18px 14px
 }
 
-.popup-music picture {
-    margin: 25px;
+.album-art {
+    margin-bottom: 8px;
 }
 
 .popup-music .title {
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 600
 }
 
-.popup-music box {
-    padding: 2px;
+.music-progress-row {
+    margin-top: 10px
+}
 
+#music-progress trough {
+    background-color: #ffffff1f;
+    min-height: 2px;
+    border-radius: 99px
+}
+
+#music-progress progress {
+    background-image: linear-gradient(to right, #ffffffb3, #fff);
+    min-height: 5px;
+    border-radius: 99px
+}
+
+.time {
+    font-size: 11px;
+    font-weight: 500;
+    opacity: .65;
+    min-width: 32px;
+    margin-top: 1px
+}
+
+.music-progress-row .time:first-child {
+    margin-right: 8px
+}
+
+.music-progress-row label:last-child {
+    margin-left: 8px
+}
+
+.music-controls {
+    margin-top: 7px
 }
 
 .popup-music .music-btn {
-    padding: 5px 15px;
+    padding: 6px 13px;
 }
 
-.popup-music .music-btn label {
-    font-size: 24px;
+.popup-music .music-playpause {
+    padding: 8px 16px;
+    margin: 0 3px
 }
 
 .widget.focused .icon {

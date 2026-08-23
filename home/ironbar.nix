@@ -336,8 +336,9 @@ in
                         }
                         {
                           type = "image";
+                          class = "bar-art";
                           src = "{{watch:/home/blade0/.config/NEUX/mpris.sh art}}";
-                          size = 40;
+                          size = 56;
                         }
                       ];
                     }
@@ -349,46 +350,102 @@ in
                       widgets = [
                         {
                           type = "image";
+                          class = "album-art";
                           src = "{{watch:/home/blade0/.config/NEUX/mpris.sh art}}";
-                          size = 128;
+                          size = 160;
                         }
                         {
                           type = "label";
                           label = "{{watch:/home/blade0/.config/NEUX/mpris.sh title}}";
                           class = "title";
+                          justify = "center";
                         }
                         {
                           type = "label";
                           label = "{{watch:/home/blade0/.config/NEUX/mpris.sh artist}}";
                           class = "subtitle";
+                          justify = "center";
                         }
                         {
                           type = "label";
                           label = "{{watch:/home/blade0/.config/NEUX/mpris.sh album}}";
                           class = "subtitle";
+                          justify = "center";
                         }
                         {
                           type = "box";
-                          orientation = "horizontal";
+                          class = "music-progress-row";
+                          halign = "center";
+                          widgets = [
+                            {
+                              type = "label";
+                              class = "time time-elapsed";
+                              justify = "right";
+                              label = "{{poll:1000:/home/blade0/.config/NEUX/mpris.sh position}}";
+                            }
+                            {
+                              type = "progress";
+                              name = "music-progress";
+                              value = {
+                                cmd = "/home/blade0/.config/NEUX/mpris.sh progress";
+                                interval = 1000;
+                              };
+                              length = 200;
+                            }
+                            {
+                              type = "label";
+                              class = "time";
+                              justify = "left";
+                              label = "{{poll:1000:/home/blade0/.config/NEUX/mpris.sh length}}";
+                            }
+                          ];
+                        }
+                        {
+                          type = "box";
+                          class = "music-controls";
                           halign = "center";
                           widgets = [
                             {
                               type = "button";
+                              name = "music-prev-btn";
                               class = "music-btn";
-                              label = "<span>󰒭</span>";
+                              tooltip = "Previous";
                               on_click = "!playerctl previous";
+                              widgets = [
+                                {
+                                  type = "image";
+                                  src = "/home/blade0/.config/ironbar/icons/prev.svg";
+                                  size = 22;
+                                }
+                              ];
                             }
                             {
                               type = "button";
-                              class = "music-btn";
-                              label = "<span>󰐊</span>";
+                              name = "music-playpause-btn";
+                              class = "music-btn music-playpause";
+                              tooltip = "Play/Pause";
                               on_click = "!playerctl play-pause";
+                              widgets = [
+                                {
+                                  type = "image";
+                                  src = "{{poll:1000:/home/blade0/.config/NEUX/mpris.sh state-icon}}";
+                                  size = 26;
+                                }
+                              ];
                             }
                             {
                               type = "button";
+                              name = "music-next-btn";
                               class = "music-btn";
-                              label = "<span>󰒭</span>";
+                              tooltip = "Next";
                               on_click = "!playerctl next";
+                              widgets = [
+                                {
+                                  type = "image";
+                                  src = "/home/blade0/.config/ironbar/icons/next.svg";
+                                  size = 22;
+                                }
+                              ];
                             }
                           ];
                         }

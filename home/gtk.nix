@@ -1,5 +1,6 @@
 {
   pkgs,
+  neuxTheming,
   ...
 }:
 {
@@ -11,6 +12,7 @@
     enable = true;
     iconTheme = {
       name = "NEUX";
+      package = neuxTheming.neux-icon-theme;
     };
     cursorTheme = {
       name = "Adwaita";
@@ -48,7 +50,10 @@
       monospace-font-name = "FiraMono Nerd Font 11";
     };
   };
-  xdg.configFile."gtk-4.0/gtk.css".source = ../assets/gtk/4.css;
-  xdg.configFile."gtk-3.0/gtk.css".source = ../assets/gtk/3.css;
-
+  # libadwaita apps ignore gtk-theme-name and only read these user overrides,
+  # so layer the NEUX css on top of the default theme instead of using it as one
+  xdg.configFile."gtk-4.0/gtk.css".source =
+    "${neuxTheming.neux-gtk-theme}/share/themes/NEUX/gtk-4.0/gtk.css";
+  xdg.configFile."gtk-3.0/gtk.css".source =
+    "${neuxTheming.neux-gtk-theme}/share/themes/NEUX/gtk-3.0/gtk.css";
 }

@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
 sleep 10
-programs=(ironbar vicinae swaync hyprpaper swayosd)
+programs=(ironbar vicinae swaync swayosd)
+
+if [ -n "$SWAYSOCK" ]; then
+    programs+=(swaybg)
+else
+    programs+=(hyprpaper)
+fi
 missing=()
 
 for p in "${programs[@]}"; do
@@ -24,7 +30,7 @@ The components that failed are listed below:
 ${missing[*]}
 
 \033[mThis shell was created as a last-ditch attempt to help you out here, in case keybinds
-or all oher programs fail. I would suggest running the programs above to see what
+or all other programs fail. I would suggest running the programs above to see what
 goes wrong, and either fixing the problem yourself, or reaching out for help at 
 \033[36m\033[4mhttps://neux.blade0.net/discord\033[m.
 

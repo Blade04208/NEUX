@@ -1,5 +1,5 @@
 {
-  description = "AURES NEUX Hyprland dotfiles";
+  description = "AURES NEUX dotfiles";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
@@ -16,13 +16,11 @@
     };
     vicinae.url = "github:vicinaehq/vicinae";
     vicinae-extensions.url = "github:vicinaehq/extensions";
-    # band-aid fix - pin hyprland to a specific commit so allow hyprbars to build
-    hyprland.url = "github:hyprwm/Hyprland/5751911091d2bbcd580597d489a1ec0b9dd542bd";
-
-    hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
-      inputs.hyprland.follows = "hyprland";
+    neux-theming = {
+      url = "github:Blade04208/NEUX-theming";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
+    hyprland.url = "github:hyprwm/Hyprland";
   };
   outputs =
     {
@@ -50,6 +48,12 @@
         imports = [
           ./system/default.nix
         ];
+
+        _module.args.hyprlandPackage =
+          inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+
+        _module.args.hyprlandPortalPackage =
+          inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
       };
 
       homeManagerModules.default = { lib, pkgs, ... }: {
@@ -61,11 +65,14 @@
 
         _module.args.hyprlua = import ./home/wm/hyprland/lib.nix { inherit lib; };
 
-        _module.args.hyprlandPlugins =
-          inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system};
+        _module.args.hyprlandPackage =
+          inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
 
         _module.args.vicinaeExtensions =
           inputs.vicinae-extensions.packages.${pkgs.stdenv.hostPlatform.system};
+
+        _module.args.neuxTheming =
+          inputs.neux-theming.packages.${pkgs.stdenv.hostPlatform.system};
       };
 
     };

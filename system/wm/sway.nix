@@ -8,6 +8,7 @@
   config = lib.mkIf (builtins.elem "sway" config.neux.activeWMs) {
     programs.sway = {
       enable = true;
+      package = pkgs.swayfx;
       wrapperFeatures.gtk = true;
     };
 
@@ -16,10 +17,13 @@
       hyprpaper
       hyprpicker
       hyprlock
+      swaybg
     ];
 
     xdg.portal = {
-      config.sway.default = [
+      wlr.enable = true;
+      config.sway.default = lib.mkForce [
+        "wlr"
         "gtk"
       ];
     };

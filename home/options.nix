@@ -2,7 +2,10 @@
 {
   options.neux = {
     wm = lib.mkOption {
-      type = lib.types.nullOr (lib.types.enum [ "hyprland" ]);
+      type = lib.types.nullOr (lib.types.enum [
+        "hyprland"
+        "sway"
+      ]);
       default = null;
       description = ''
         Which window manager NEUX should configure for this user. If not available already, this will be installed system-wide.

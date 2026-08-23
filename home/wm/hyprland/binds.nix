@@ -57,7 +57,7 @@ in
         (hl.bind "${mainMod} + SHIFT + C" (hl.exec "hyprpicker -a -n"))
         (hl.bind (key "V") (hl.exec "vicinae 'vicinae://launch/clipboard/history'"))
         (hl.bind (key "ALT + SPACE") (hl.inline ''hl.dsp.window.float({ action = "toggle" })''))
-        (hl.bind (key "SUPER_L") (hl.exec menu))
+        (hl.bindWith { release = true; } (key "SUPER_L") (hl.exec menu))
         (hl.bind (key "S") (hl.exec "vicinae 'vicinae://launch/files/search'"))
         (hl.bind (key "A") (hl.exec "vicinae 'vicinae://launch/system/browse-apps'"))
         (hl.bind (key "BRACKETLEFT") (hl.exec "ironbar bar top-bar toggle-visible"))

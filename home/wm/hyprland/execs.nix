@@ -36,7 +36,7 @@ in
                 hl.exec_cmd("gnome-keyring-daemon --start --components=secrets,pkcs11,ssh")
                 hl.exec_cmd("ironbar")
                 hl.exec_cmd("vicinae server")
-                hl.exec_cmd("$HOME/.config/neux/checkin.sh")
+                hl.exec_cmd("$HOME/.config/NEUX/checkin.sh")
                 hl.exec_cmd("hyprctl setcursor Adwaita 24")
               end
             '')
