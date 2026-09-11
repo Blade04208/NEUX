@@ -3,6 +3,9 @@
   neuxTheming,
   ...
 }:
+let
+  darkTheme = { gtk-application-prefer-dark-theme = 1; };
+in
 {
 
   xdg.configFile."gtk-3.0/settings.ini".force = true;
@@ -24,13 +27,8 @@
       package = pkgs.fira-sans;
     };
 
-    gtk3.extraConfig = {
-      # gtk-theme-name = "adw-gtk3-dark";
-      gtk-application-prefer-dark-theme = 1;
-    };
-    gtk4.extraConfig = {
-      gtk-application-prefer-dark-theme = 1;
-    };
+    gtk3.extraConfig = darkTheme;
+    gtk4.extraConfig = darkTheme;
   };
 
   home.pointerCursor = {

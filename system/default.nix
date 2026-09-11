@@ -1,7 +1,4 @@
-{ config, lib, pkgs, ... }:
-let
-  caches = import ../caches.nix;
-in
+{ config, lib, pkgs, caches, ... }:
 {
   imports = [
     ./bridge.nix

@@ -52,12 +52,6 @@
           ignore_alpha = 0.3;
         }
         {
-          match.namespace = "swayosd";
-          blur = true;
-          blur_popups = true;
-          ignore_alpha = 0.3;
-        }
-        {
           match.namespace = "swaync-control-center";
           blur = true;
           ignore_alpha = 0;

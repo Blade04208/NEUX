@@ -1,6 +1,24 @@
 { config, ... }:
 let
   cfg = config.neux;
+  cfgDir = "${config.xdg.configHome}/ironbar";
+  ncDir = "${config.xdg.configHome}/NEUX";
+  sep = {
+    type = "custom";
+    class = "separator";
+    transition_type = "none";
+    bar = [
+      {
+        type = "box";
+        widgets = [
+          {
+            type = "image";
+            src = "${cfgDir}/separator.svg";
+          }
+        ];
+      }
+    ];
+  };
 in
 {
   config = {
@@ -132,7 +150,7 @@ in
                       widgets = [
                         {
                           type = "image";
-                          src = "/home/blade0/.config/ironbar/nc-star.svg";
+                          src = "${cfgDir}/nc-star.svg";
                         }
                       ];
                     }
@@ -167,12 +185,12 @@ in
                           widgets = [
                             {
                               type = "label";
-                              label = "{{poll:60000:/home/blade0/.config/NEUX/weather.sh temp}} ~ {{poll:9:/home/blade0/.config/NEUX/weather.sh condition}}";
+                              label = "{{poll:60000:${ncDir}/weather.sh temp}} ~ {{poll:9:${ncDir}/weather.sh condition}}";
                               class = "bold";
                             }
                             {
                               type = "label";
-                              label = "{{poll:60000:/home/blade0/.config/NEUX/weather.sh location}}";
+                              label = "{{poll:60000:${ncDir}/weather.sh location}}";
                               class = "subtitle";
                             }
                           ];
@@ -187,17 +205,7 @@ in
                   class = "separator";
                   transition_type = "none";
                   show_if = "#show_weather";
-                  bar = [
-                    {
-                      type = "box";
-                      widgets = [
-                        {
-                          type = "image";
-                          src = "/home/blade0/.config/ironbar/separator.svg";
-                        }
-                      ];
-                    }
-                  ];
+                  bar = sep.bar;
                 }
               ];
 
@@ -214,7 +222,7 @@ in
                       widgets = [
                         {
                           type = "image";
-                          src = "/home/blade0/.config/ironbar/apps.png";
+                          src = "${cfgDir}/apps.png";
                           size = 38;
                         }
                       ];
@@ -228,21 +236,7 @@ in
                   favorites = cfg.favorites;
                 }
 
-                {
-                  type = "custom";
-                  class = "separator";
-                  bar = [
-                    {
-                      type = "box";
-                      widgets = [
-                        {
-                          type = "image";
-                          src = "/home/blade0/.config/ironbar/separator.svg";
-                        }
-                      ];
-                    }
-                  ];
-                }
+                sep
 
                 {
                   type = "launcher";
@@ -251,21 +245,7 @@ in
                   favorites = cfg.favorites;
                 }
 
-                {
-                  type = "custom";
-                  class = "separator";
-                  bar = [
-                    {
-                      type = "box";
-                      widgets = [
-                        {
-                          type = "image";
-                          src = "/home/blade0/.config/ironbar/separator.svg";
-                        }
-                      ];
-                    }
-                  ];
-                }
+                sep
 
                 {
                   type = "custom";
@@ -279,7 +259,7 @@ in
                       widgets = [
                         {
                           type = "image";
-                          src = "/home/blade0/.config/ironbar/trash.png";
+                          src = "${cfgDir}/trash.png";
                           size = 38;
                         }
                       ];
@@ -289,21 +269,7 @@ in
               ];
 
               end = [
-                {
-                  type = "custom";
-                  class = "separator";
-                  bar = [
-                    {
-                      type = "box";
-                      widgets = [
-                        {
-                          type = "image";
-                          src = "/home/blade0/.config/ironbar/separator.svg";
-                        }
-                      ];
-                    }
-                  ];
-                }
+                sep
                 {
                   type = "custom";
                   class = "music";
@@ -322,13 +288,13 @@ in
                           widgets = [
                             {
                               type = "label";
-                              label = "{{watch:/home/blade0/.config/NEUX/mpris.sh title}}";
+                              label = "{{watch:${ncDir}/mpris.sh title}}";
                               justify = "right";
                               class = "bold";
                             }
                             {
                               type = "label";
-                              label = "{{watch:/home/blade0/.config/NEUX/mpris.sh artist}}";
+                              label = "{{watch:${ncDir}/mpris.sh artist}}";
                               justify = "right";
                               class = "subtitle";
                             }
@@ -337,7 +303,7 @@ in
                         {
                           type = "image";
                           class = "bar-art";
-                          src = "{{watch:/home/blade0/.config/NEUX/mpris.sh art}}";
+                          src = "{{watch:${ncDir}/mpris.sh art}}";
                           size = 56;
                         }
                       ];
@@ -351,24 +317,24 @@ in
                         {
                           type = "image";
                           class = "album-art";
-                          src = "{{watch:/home/blade0/.config/NEUX/mpris.sh art}}";
+                          src = "{{watch:${ncDir}/mpris.sh art}}";
                           size = 160;
                         }
                         {
                           type = "label";
-                          label = "{{watch:/home/blade0/.config/NEUX/mpris.sh title}}";
+                          label = "{{watch:${ncDir}/mpris.sh title}}";
                           class = "title";
                           justify = "center";
                         }
                         {
                           type = "label";
-                          label = "{{watch:/home/blade0/.config/NEUX/mpris.sh artist}}";
+                          label = "{{watch:${ncDir}/mpris.sh artist}}";
                           class = "subtitle";
                           justify = "center";
                         }
                         {
                           type = "label";
-                          label = "{{watch:/home/blade0/.config/NEUX/mpris.sh album}}";
+                          label = "{{watch:${ncDir}/mpris.sh album}}";
                           class = "subtitle";
                           justify = "center";
                         }
@@ -381,13 +347,13 @@ in
                               type = "label";
                               class = "time time-elapsed";
                               justify = "right";
-                              label = "{{poll:1000:/home/blade0/.config/NEUX/mpris.sh position}}";
+                              label = "{{poll:1000:${ncDir}/mpris.sh position}}";
                             }
                             {
                               type = "progress";
                               name = "music-progress";
                               value = {
-                                cmd = "/home/blade0/.config/NEUX/mpris.sh progress";
+                                cmd = "${ncDir}/mpris.sh progress";
                                 interval = 1000;
                               };
                               length = 200;
@@ -396,7 +362,7 @@ in
                               type = "label";
                               class = "time";
                               justify = "left";
-                              label = "{{poll:1000:/home/blade0/.config/NEUX/mpris.sh length}}";
+                              label = "{{poll:1000:${ncDir}/mpris.sh length}}";
                             }
                           ];
                         }
@@ -414,7 +380,7 @@ in
                               widgets = [
                                 {
                                   type = "image";
-                                  src = "/home/blade0/.config/ironbar/icons/prev.svg";
+                                  src = "${cfgDir}/icons/prev.svg";
                                   size = 22;
                                 }
                               ];
@@ -428,7 +394,7 @@ in
                               widgets = [
                                 {
                                   type = "image";
-                                  src = "{{poll:1000:/home/blade0/.config/NEUX/mpris.sh state-icon}}";
+                                  src = "{{poll:1000:${ncDir}/mpris.sh state-icon}}";
                                   size = 26;
                                 }
                               ];
@@ -442,7 +408,7 @@ in
                               widgets = [
                                 {
                                   type = "image";
-                                  src = "/home/blade0/.config/ironbar/icons/next.svg";
+                                  src = "${cfgDir}/icons/next.svg";
                                   size = 22;
                                 }
                               ];

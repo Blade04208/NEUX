@@ -3,8 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    chaotic.url = "github:chaotic-cx/nyx";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-26.05";
@@ -54,6 +52,8 @@
 
         _module.args.hyprlandPortalPackage =
           inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+
+        _module.args.caches = caches;
       };
 
       homeManagerModules.default = { lib, pkgs, ... }: {

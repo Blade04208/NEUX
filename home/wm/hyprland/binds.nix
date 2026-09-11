@@ -12,23 +12,19 @@ let
   mainMod = "SUPER";
   key = k: "${mainMod} + ${k}";
 
+  mkFn = body: hl.inline ''function() ${body} end'';
+
   execFn =
     cmd:
-    hl.inline ''
-      function()
-        hl.exec_cmd(${hl.toLua cmd})
-      end
-    '';
+    mkFn ''hl.exec_cmd(${hl.toLua cmd})'';
 
   zoomBind =
     k: delta:
     hl.bind (key k) (
-      hl.inline ''
-        function()
-          hl.config({
-            cursor = { zoom_factor = math.min(3.0, math.max(1.0, hl.get_config("cursor:zoom_factor") + ${delta})) },
-          })
-        end
+      mkFn ''
+        hl.config({
+          cursor = { zoom_factor = math.min(3.0, math.max(1.0, hl.get_config("cursor:zoom_factor") + ${delta})) },
+        })
       ''
     );
   workspaces = builtins.genList (

@@ -5,15 +5,6 @@
 }:
 let
   hl = import ./lib.nix { inherit lib; };
-
-  env =
-    name: value:
-    {
-      _args = [
-        name
-        value
-      ];
-    };
 in
 {
   config = lib.mkIf (config.neux.wm == "hyprland") {
@@ -45,8 +36,8 @@ in
       ];
 
       env = lib.mkDefault [
-        (env "XCURSOR_SIZE" "24")
-        (env "HYPRCURSOR_SIZE" "24")
+        (hl.bind "XCURSOR_SIZE" "24")
+        (hl.bind "HYPRCURSOR_SIZE" "24")
       ];
     };
   };
