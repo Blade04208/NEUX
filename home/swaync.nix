@@ -28,7 +28,6 @@
       script-fail-notify = true;
       widgets = [
         "title"
-        "buttons-grid"
         "backlight"
         "volume"
         "inhibitors"
@@ -38,7 +37,7 @@
       widget-config = {
         title = {
           text = "Action Center";
-          clear-all-button = false;
+          clear-all-button = true;
         };
         label = {
           max-lines = 5;
@@ -56,32 +55,6 @@
           # device = "intel_backlight";
           subsystem = "backlight";
           min = 10;
-        };
-        buttons-grid = {
-          actions = [
-            {
-              label = "  Wifi";
-              command = "swaync-client -cp -sw; vicinae 'vicinae://launch/@dagimg-dot/store.vicinae.wifi-commander/'";
-            }
-            {
-              label = "󰂯 Bluetooth";
-              command = "swaync-client -cp -sw; vicinae 'vicinae://launch/@Gelei/store.vicinae.bluetooth/'";
-            }
-            {
-              label = " Color Picker";
-              command = "swaync-client -cp -sw; sleep 0.01; hyprpicker";
-            }
-            {
-              label = "󰉔 Wallpaper";
-              command = "swaync-client -cp -sw; vicinae 'vicinae://launch/scripts/wallpaper.sh'";
-            }
-            {
-              label = "Do Not Disturb";
-              type = "toggle";
-              command = "swaync-client -d";
-              update-command = "swaync-client -D";
-            }
-          ];
         };
       };
     };

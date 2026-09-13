@@ -22,14 +22,14 @@
       close_on_focus_loss = false;
       pop_to_root_on_close = true;
       search_files_in_root = true;
-
       font = {
         rendering = "native";
         normal = {
           family = "Fira Sans";
         };
       };
-
+      tray.enabled = false;
+      global_shortcuts.toggle = "";
       theme = {
         dark = {
           name = "neux";
@@ -41,6 +41,7 @@
         client_side_decorations = {
           enabled = true;
         };
+        clock.enabled = false;
       };
 
       keybinds = {
@@ -75,7 +76,7 @@
         };
 
         "browser-extension" = {
-          enabled = false;
+          enabled = true;
         };
 
         calculator = {
@@ -183,6 +184,9 @@
                 confirm = true;
                 customProgram = "";
               };
+            };
+            "soft-reboot" = {
+              enabled = false;
             };
           };
         };
