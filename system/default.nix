@@ -41,6 +41,11 @@
       pkgs.xdg-desktop-portal-gnome
       pkgs.xdg-desktop-portal-gtk
     ];
+    config = {
+      common = {
+        "org.freedesktop.impl.portal.FileChooser" = "gnome";
+      };
+    };
   };
 
   environment.sessionVariables = {

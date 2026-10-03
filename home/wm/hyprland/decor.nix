@@ -6,19 +6,26 @@
 let
   hl = import ./lib.nix { inherit lib; };
 
-  curve =
-    name: p1: p2:
-    {
-      _args = [
-        name
-        {
-          type = "bezier";
-          points = [ p1 p2 ];
-        }
-      ];
-    };
+  curve = name: p1: p2: {
+    _args = [
+      name
+      {
+        type = "bezier";
+        points = [
+          p1
+          p2
+        ];
+      }
+    ];
+  };
 
-  animation = leaf: speed: bezier: style: { enabled = true; inherit leaf speed bezier; } // (lib.optionalAttrs (style != null) { inherit style; });
+  animation =
+    leaf: speed: bezier: style:
+    {
+      enabled = true;
+      inherit leaf speed bezier;
+    }
+    // (lib.optionalAttrs (style != null) { inherit style; });
 in
 {
   config = lib.mkIf (config.neux.wm == "hyprland") {
@@ -32,7 +39,13 @@ in
         (curve "standardDecel" [ 0.0 0.0 ] [ 0.0 1.0 ])
         (curve "menu_decel" [ 0.1 1.0 ] [ 0.0 1.0 ])
         (curve "menu_accel" [ 0.52 0.03 ] [ 0.72 0.08 ])
-        (curve "stall" [ 1.0 (-0.1) ] [ 0.7 0.85 ])
+        (curve "stall"
+          [
+            1.0
+            (-0.1)
+          ]
+          [ 0.7 0.85 ]
+        )
       ];
 
       animation = [
@@ -56,10 +69,14 @@ in
         general = {
           gaps_in = 5;
           gaps_out = 10;
-          border_size = 0;
-          resize_on_border = false;
+          border_size = 1;
+          resize_on_border = true;
           allow_tearing = false;
           layout = "dwindle";
+          col = {
+            active_border = "0xff000000";
+            inactive_border = "0xff000000";
+          };
         };
 
         decoration = {
@@ -89,7 +106,6 @@ in
             new_optimizations = true;
             popups = true;
             input_methods = true;
-            xray = true;
           };
         };
 

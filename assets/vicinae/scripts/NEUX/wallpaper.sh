@@ -5,6 +5,12 @@
 # @vicinae.mode silent
 # @vicinae.exec ["/bin/bash"]
 
+# vicinae can you not fucking stop thinking every 10 seconds
+if [ -z "$NEUX_WALLPAPER_DETACHED" ]; then
+    setsid env NEUX_WALLPAPER_DETACHED=1 bash "$0" >/dev/null 2>&1 &
+    exit 0
+fi
+
 WP_PATH=$(find ~/Pictures/Wallpapers -type f | vicinae dmenu -p "Pick a wallpaper...")
 
 if [ -n "$SWAYSOCK" ]; then

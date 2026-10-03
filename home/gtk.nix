@@ -1,4 +1,5 @@
 {
+  lib,
   pkgs,
   neuxTheming,
   ...
@@ -48,10 +49,20 @@ in
       monospace-font-name = "FiraMono Nerd Font 11";
     };
   };
-  # libadwaita apps ignore gtk-theme-name and only read these user overrides,
-  # so layer the NEUX css on top of the default theme instead of using it as one
+
   xdg.configFile."gtk-4.0/gtk.css".source =
     "${neuxTheming.neux-gtk-theme}/share/themes/NEUX/gtk-4.0/gtk.css";
   xdg.configFile."gtk-3.0/gtk.css".source =
     "${neuxTheming.neux-gtk-theme}/share/themes/NEUX/gtk-3.0/gtk.css";
+
+  home.activation.ohMyGodFlatpaksWhyAreYouSoGoddamnStubbornJustUseTheDamnFiles =
+    lib.hm.dag.entryAfter [ "linkGeneration" ] ''
+      for cfg in "$HOME"/.var/app/*/config; do
+        [ -d "$cfg" ] || continue
+        mkdir -p "$cfg/gtk-4.0" "$cfg/gtk-3.0"
+        ln -sfn ${neuxTheming.neux-gtk-theme}/share/themes/NEUX/gtk-4.0/gtk.css "$cfg/gtk-4.0/gtk.css"
+        ln -sfn ${neuxTheming.neux-gtk-theme}/share/themes/NEUX/gtk-3.0/gtk.css "$cfg/gtk-3.0/gtk.css"
+        [ -e "$cfg/gtk-4.0/settings.ini" ] || cp ~/.config/gtk-4.0/settings.ini "$cfg/gtk-4.0/settings.ini"
+      done
+    '';
 }

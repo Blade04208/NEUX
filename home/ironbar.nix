@@ -29,8 +29,9 @@ in
       config = {
         ironvar_defaults = {
           show_weather = true;
-          tray_open = true;
-          tray_closed = false;
+          tray_open = false;
+          tray_closed = true;
+          mpris_active = false;
         };
 
         monitors = {
@@ -42,7 +43,7 @@ in
               name = "top-bar";
               height = "0";
               margin = {
-                top = 12;
+                top = 14;
                 bottom = 0;
                 left = 14;
                 right = 14;
@@ -130,12 +131,19 @@ in
 
                 {
                   type = "battery";
-                  "icon-size" = "14";
+                  format = ''🯧<span background="white" color="black"> {percentage} </span> '';
+                  show_icon = false;
+                  profiles.charging.when = {
+                    charging = true;
+                  };
+                  profiles.charging.format = ''🯧<span background="white" color="black"> {percentage} </span>  󰚥'';
                 }
 
                 {
                   type = "clock";
-                  format = "%b. %d %H:%M";
+                  # WHY THE FUCK DO SPANS ONLY ACCEPT "" AS A VALID STRING
+                  # FUCK YOU PANGO
+                  format = ''<span alpha="52428">%A, %b. %d</span>  <b>%H:%M</b>'';
                 }
 
                 {
@@ -162,52 +170,10 @@ in
             # ── BOTTOM BAR ─────────────────────────────────────────────────
             {
               position = "bottom";
-              height = 68;
+              height = 63;
               name = "bottom-bar";
 
-              start = [
-                {
-                  type = "custom";
-                  class = "weather";
-                  tooltip = "Weather";
-                  transition_type = "none";
-                  show_if = "#show_weather";
-                  bar = [
-                    {
-                      type = "button";
-                      on_click = "!io.github.danirabbit.nimbus";
-                      widgets = [
-                        {
-                          type = "box";
-                          orientation = "vertical";
-                          valign = "center";
-                          halign = "start";
-                          widgets = [
-                            {
-                              type = "label";
-                              label = "{{poll:60000:${ncDir}/weather.sh temp}} ~ {{poll:9:${ncDir}/weather.sh condition}}";
-                              class = "bold";
-                            }
-                            {
-                              type = "label";
-                              label = "{{poll:60000:${ncDir}/weather.sh location}}";
-                              class = "subtitle";
-                            }
-                          ];
-                        }
-                      ];
-                    }
-                  ];
-                }
-
-                {
-                  type = "custom";
-                  class = "separator";
-                  transition_type = "none";
-                  show_if = "#show_weather";
-                  bar = sep.bar;
-                }
-              ];
+              start = [ ];
 
               center = [
                 {
@@ -269,16 +235,16 @@ in
               ];
 
               end = [
-                sep
                 {
                   type = "custom";
                   class = "music";
+                  show_if = "#mpris_active";
                   bar = [
                     {
                       type = "button";
                       valign = "center";
                       halign = "end";
-                      on_click = "popup:toggle";
+                      on_click = "!swaync-client -t";
                       widgets = [
                         {
                           type = "box";
@@ -304,116 +270,7 @@ in
                           type = "image";
                           class = "bar-art";
                           src = "{{watch:${ncDir}/mpris.sh art}}";
-                          size = 56;
-                        }
-                      ];
-                    }
-                  ];
-                  popup = [
-                    {
-                      type = "box";
-                      orientation = "vertical";
-                      widgets = [
-                        {
-                          type = "image";
-                          class = "album-art";
-                          src = "{{watch:${ncDir}/mpris.sh art}}";
-                          size = 160;
-                        }
-                        {
-                          type = "label";
-                          label = "{{watch:${ncDir}/mpris.sh title}}";
-                          class = "title";
-                          justify = "center";
-                        }
-                        {
-                          type = "label";
-                          label = "{{watch:${ncDir}/mpris.sh artist}}";
-                          class = "subtitle";
-                          justify = "center";
-                        }
-                        {
-                          type = "label";
-                          label = "{{watch:${ncDir}/mpris.sh album}}";
-                          class = "subtitle";
-                          justify = "center";
-                        }
-                        {
-                          type = "box";
-                          class = "music-progress-row";
-                          halign = "center";
-                          widgets = [
-                            {
-                              type = "label";
-                              class = "time time-elapsed";
-                              justify = "right";
-                              label = "{{poll:1000:${ncDir}/mpris.sh position}}";
-                            }
-                            {
-                              type = "progress";
-                              name = "music-progress";
-                              value = {
-                                cmd = "${ncDir}/mpris.sh progress";
-                                interval = 1000;
-                              };
-                              length = 200;
-                            }
-                            {
-                              type = "label";
-                              class = "time";
-                              justify = "left";
-                              label = "{{poll:1000:${ncDir}/mpris.sh length}}";
-                            }
-                          ];
-                        }
-                        {
-                          type = "box";
-                          class = "music-controls";
-                          halign = "center";
-                          widgets = [
-                            {
-                              type = "button";
-                              name = "music-prev-btn";
-                              class = "music-btn";
-                              tooltip = "Previous";
-                              on_click = "!playerctl previous";
-                              widgets = [
-                                {
-                                  type = "image";
-                                  src = "${cfgDir}/icons/prev.svg";
-                                  size = 22;
-                                }
-                              ];
-                            }
-                            {
-                              type = "button";
-                              name = "music-playpause-btn";
-                              class = "music-btn music-playpause";
-                              tooltip = "Play/Pause";
-                              on_click = "!playerctl play-pause";
-                              widgets = [
-                                {
-                                  type = "image";
-                                  src = "{{poll:1000:${ncDir}/mpris.sh state-icon}}";
-                                  size = 26;
-                                }
-                              ];
-                            }
-                            {
-                              type = "button";
-                              name = "music-next-btn";
-                              class = "music-btn";
-                              tooltip = "Next";
-                              on_click = "!playerctl next";
-                              widgets = [
-                                {
-                                  type = "image";
-                                  src = "${cfgDir}/icons/next.svg";
-                                  size = 22;
-                                }
-                              ];
-                            }
-                          ];
+                          size = 38;
                         }
                       ];
                     }

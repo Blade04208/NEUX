@@ -1,9 +1,12 @@
 #!/usr/bin/env bash
 
 MAX=48
-RETRY_DELAY=1
+WATCHDOG=${WATCHDOG:-5}
 CACHE_DIR="$HOME/.cache/neux/mpris"
 NOART="$HOME/.config/ironbar/noart.png"
+ACTIVE_VAR=mpris_active
+
+RECORD=$(printf '{{status}}\t{{title}}\t{{artist}}\t{{mpris:artUrl}}')
 
 trap 'exit' INT TERM EXIT
 
@@ -53,107 +56,67 @@ resolve_art() {
     fi
 }
 
-stream_field() {
+pick_player() {
+    local p paused="" state
+    for p in $(playerctl -l 2>/dev/null); do
+        state=$(timeout 2 playerctl -p "$p" status 2>/dev/null)
+        case "$state" in
+            Playing) printf '%s' "$p"; return ;;
+            Paused)  [[ -z "$paused" ]] && paused="$p" ;;
+        esac
+    done
+    printf '%s' "$paused"
+}
+
+stream() {
     local field="$1"
-    local last="<unset>"
+    local player rec="" last="<unset>" visible="<unset>" out
+    local status title artist art inactive
+
+    case "$field" in art) inactive="$NOART" ;; *) inactive="Nothing Playing" ;; esac
+
+    set_visible() {
+        [[ "$visible" == "$1" ]] && return
+        visible="$1"
+        ironbar var set "$ACTIVE_VAR" "$1" >/dev/null 2>&1
+    }
 
     while true; do
-        while IFS= read -r val; do
-            local out
-            if [[ -z "$val" ]]; then
-                out="Nothing Playing"
+        player=$(pick_player)
+        if [[ -z "$player" ]]; then
+            set_visible false
+            if [[ "$last" != "$inactive" ]]; then echo "$inactive"; last="$inactive"; fi
+            sleep 1
+            continue
+        fi
+
+        while IFS=$'\t' read -r status title artist art; do
+            [[ "$rec" == "$status|$title|$artist|$art" ]] && continue
+            rec="$status|$title|$artist|$art"
+
+            if [[ "$status" == Playing || "$status" == Paused ]]; then
+                set_visible true
+                if [[ "$field" == art ]]; then
+                    out=$(resolve_art "$art")
+                else
+                    out="${!field}"
+                    [[ -n "$out" ]] || out="$inactive"
+                    out=$(trim "$out")
+                fi
             else
-                out=$(trim "$val")
+                set_visible false
+                out="$inactive"
             fi
-            if [[ "$out" != "$last" ]]; then
-                echo "$out"
-                last="$out"
-            fi
-        done < <(playerctl metadata "$field" -F 2>/dev/null)
 
-        if [[ "Nothing Playing" != "$last" ]]; then
-            echo "Nothing Playing"
-            last="Nothing Playing"
-        fi
-        sleep "$RETRY_DELAY"
+            [[ "$out" != "$last" ]] && { echo "$out"; last="$out"; }
+        done < <(timeout "$WATCHDOG" playerctl -p "$player" metadata -f "$RECORD" -F 2>/dev/null)
     done
-}
-
-stream_art() {
-    local last="<unset>"
-
-    while true; do
-        while IFS= read -r uri; do
-            local out
-            out=$(resolve_art "$uri")
-            if [[ "$out" != "$last" ]]; then
-                echo "$out"
-                last="$out"
-            fi
-        done < <(playerctl metadata mpris:artUrl -F 2>/dev/null)
-
-        if [[ "$NOART" != "$last" ]]; then
-            echo "$NOART"
-            last="$NOART"
-        fi
-        sleep "$RETRY_DELAY"
-    done
-}
-
-status_now() {
-    playerctl status 2>/dev/null || echo "Stopped"
-}
-
-fmt_time() {
-    local s="${1%%.*}"
-    s=$(printf '%s' "$s" | tr -cd '0-9')
-    : "${s:=0}"
-    s=$((10#$s))
-    printf '%d:%02d' $((s / 60)) $((s % 60))
-}
-
-position_secs() {
-    local pos
-    pos=$(playerctl position 2>/dev/null)
-    printf '%s' "${pos:-0}"
-}
-
-length_secs() {
-    local len
-    len=$(playerctl metadata mpris:length 2>/dev/null)
-    printf '%s' "$(( ${len:-0} / 1000000 ))"
-}
-
-state_icon() {
-    case "$(status_now)" in
-        Playing) echo "icon:media-playback-pause-symbolic" ;;
-        *)       echo "icon:media-playback-start-symbolic"  ;;
-    esac
-}
-
-progress_pct() {
-    local pos len
-    pos=$(position_secs)
-    len=$(length_secs)
-    if (( len > 0 )); then
-        awk -v p="$pos" -v l="$len" 'BEGIN { pct = p * 100 / l; if (pct > 100) pct = 100; if (pct < 0) pct = 0; printf "%.2f", pct }'
-    else
-        echo 0
-    fi
 }
 
 case "$1" in
-    title)       stream_field title  ;;
-    artist)      stream_field artist ;;
-    album)       stream_field album  ;;
-    art)         stream_art          ;;
-    status)      status_now          ;;
-    state-icon)  state_icon          ;;
-    position)    fmt_time "$(position_secs)" ;;
-    length)      fmt_time "$(length_secs)"   ;;
-    progress)    progress_pct        ;;
+    title|artist|art) stream "$1"   ;;
     *)
-        echo "Usage: $0 {title|artist|album|art|status|state-icon|position|length|progress}"
+        echo "Usage: $0 {title|artist|art}"
         exit 1
         ;;
 esac

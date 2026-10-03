@@ -59,6 +59,7 @@ in
         (hl.bind (key "BRACKETLEFT") (hl.exec "ironbar bar top-bar toggle-visible"))
         (hl.bind (key "BRACKETRIGHT") (hl.exec "ironbar bar bottom-bar toggle-visible"))
         (hl.bind (key "L") (hl.exec "hyprlock"))
+        (hl.bind (key "N") (hl.exec "swaync-client -t"))
         (hl.bind (key "PERIOD") (hl.exec "vicinae 'vicinae://launch/core/search-emojis'"))
         (hl.bind "CONTROL + ALT + SPACE" (hl.exec "vicinae 'vicinae://launch/core/search-emojis'"))
         (hl.bind "ALT + TAB" (hl.exec "vicinae 'vicinae://launch/wm/switch-windows'"))

@@ -66,8 +66,10 @@
     margin-right: 7.5px
 }
 
+
 #top-bar .widget.network_manager {
-    background: linear-gradient(#28282833, #28282833), linear-gradient(#0003, #0003), linear-gradient(#0000001a, #50505000);
+    background: linear-gradient(0deg, rgba(81, 81, 81, 0.1), rgba(81, 81, 81, 0.1)), linear-gradient(0deg, rgba(40, 40, 40, 0.7), rgba(40, 40, 40, 0.7)), linear-gradient(180deg, rgba(0, 0, 0, 0.32) 8.83%, rgba(0, 0, 0, 0.12) 109.52%);
+    background-blend-mode: saturation, luminosity, luminosity;
     border: 1px solid #0006;
     border-radius: 200px;
     border-radius: 23px;
@@ -80,7 +82,8 @@
 
 #top-bar .widget:not(.custom):not(.workspaces):not(.focused):not(.tray):not(.network_manager),
 #top-bar .custom:not(.power-menu) button:not(#tray-btn) {
-    background: linear-gradient(#28282833, #28282833), linear-gradient(#0003, #0003), linear-gradient(#0000001a, #50505000);
+    background: linear-gradient(0deg, rgba(81, 81, 81, 0.1), rgba(81, 81, 81, 0.1)), linear-gradient(0deg, rgba(40, 40, 40, 0.7), rgba(40, 40, 40, 0.7)), linear-gradient(180deg, rgba(0, 0, 0, 0.32) 8.83%, rgba(0, 0, 0, 0.12) 109.52%);
+    background-blend-mode: saturation, luminosity, luminosity;
     border: 1px solid #0006;
     border-radius: 200px;
     border-radius: 23px;
@@ -210,7 +213,8 @@ tooltip {
 }
 
 .tray .item {
-    background: linear-gradient(#28282833, #28282833), linear-gradient(#0003, #0003), linear-gradient(#0000001a, #50505000);
+    background: linear-gradient(0deg, rgba(81, 81, 81, 0.1), rgba(81, 81, 81, 0.1)), linear-gradient(0deg, rgba(40, 40, 40, 0.7), rgba(40, 40, 40, 0.7)), linear-gradient(180deg, rgba(0, 0, 0, 0.32) 8.83%, rgba(0, 0, 0, 0.12) 109.52%);
+    background-blend-mode: saturation, luminosity, luminosity;
     border: 1px solid #0006;
     border-radius: 200px;
     border-radius: 23px;
@@ -234,7 +238,8 @@ tooltip {
 }
 
 .widget.focused {
-    background: linear-gradient(#28282833, #28282833), linear-gradient(#0003, #0003), linear-gradient(#0000001a, #50505000);
+    background: linear-gradient(0deg, rgba(81, 81, 81, 0.1), rgba(81, 81, 81, 0.1)), linear-gradient(0deg, rgba(40, 40, 40, 0.7), rgba(40, 40, 40, 0.7)), linear-gradient(180deg, rgba(0, 0, 0, 0.32) 8.83%, rgba(0, 0, 0, 0.12) 109.52%);
+    background-blend-mode: saturation, luminosity, luminosity;
     border-radius: 200px;
     border-radius: 23px;
     box-shadow: inset 0 2px 0 0px #ffffff14, inset 0 0 0 1px #0006, 0 2px 4px #0000004d;
@@ -242,64 +247,6 @@ tooltip {
     font-weight: 500;
     padding: 0;
     transition: all ease .3s
-}
-
-.popup-music {
-    padding: 16px 18px 14px
-}
-
-.album-art {
-    margin-bottom: 8px;
-}
-
-.popup-music .title {
-    font-size: 16px;
-    font-weight: 600
-}
-
-.music-progress-row {
-    margin-top: 10px
-}
-
-#music-progress trough {
-    background-color: #ffffff1f;
-    min-height: 2px;
-    border-radius: 99px
-}
-
-#music-progress progress {
-    background-image: linear-gradient(to right, #ffffffb3, #fff);
-    min-height: 5px;
-    border-radius: 99px
-}
-
-.time {
-    font-size: 11px;
-    font-weight: 500;
-    opacity: .65;
-    min-width: 32px;
-    margin-top: 1px
-}
-
-.music-progress-row .time:first-child {
-    margin-right: 8px
-}
-
-.music-progress-row label:last-child {
-    margin-left: 8px
-}
-
-.music-controls {
-    margin-top: 7px
-}
-
-.popup-music .music-btn {
-    padding: 6px 13px;
-}
-
-.popup-music .music-playpause {
-    padding: 8px 16px;
-    margin: 0 3px
 }
 
 .widget.focused .icon {
@@ -314,7 +261,8 @@ tooltip {
 }
 
 .workspaces {
-    background: linear-gradient(#28282833, #28282833), linear-gradient(#0003, #0003), linear-gradient(#0000001a, #50505000);
+    background: linear-gradient(0deg, rgba(81, 81, 81, 0.1), rgba(81, 81, 81, 0.1)), linear-gradient(0deg, rgba(40, 40, 40, 0.7), rgba(40, 40, 40, 0.7)), linear-gradient(180deg, rgba(0, 0, 0, 0.32) 8.83%, rgba(0, 0, 0, 0.12) 109.52%);
+    background-blend-mode: saturation, luminosity, luminosity;
     border: 1px solid #0006;
     border-radius: 200px;
     border-radius: 23px;
@@ -340,7 +288,8 @@ tooltip {
 }
 
 button#tray-btn {
-    background: linear-gradient(#28282833, #28282833), linear-gradient(#0003, #0003), linear-gradient(#0000001a, #50505000);
+    background: linear-gradient(0deg, rgba(81, 81, 81, 0.1), rgba(81, 81, 81, 0.1)), linear-gradient(0deg, rgba(40, 40, 40, 0.7), rgba(40, 40, 40, 0.7)), linear-gradient(180deg, rgba(0, 0, 0, 0.32) 8.83%, rgba(0, 0, 0, 0.12) 109.52%);
+    background-blend-mode: saturation, luminosity, luminosity;
     border: 1px solid #0006;
     border-radius: 200px;
     border-radius: 23px;
@@ -400,7 +349,8 @@ image.icon {
 popover:not(.menu),
 tooltip,
 .tray popover contents {
-    background: linear-gradient(#28282833, #28282833), linear-gradient(#0003, #0003), linear-gradient(#0000001a, #50505000);
+    background: linear-gradient(0deg, rgba(81, 81, 81, 0.1), rgba(81, 81, 81, 0.1)), linear-gradient(0deg, rgba(40, 40, 40, 0.7), rgba(40, 40, 40, 0.7)), linear-gradient(180deg, rgba(0, 0, 0, 0.32) 8.83%, rgba(0, 0, 0, 0.12) 109.52%);
+    background-blend-mode: saturation, luminosity, luminosity;
     border: 1px solid #0006;
     border-radius: 10px;
     box-shadow: inset 0 0 0 1px #ffffff14, 0 2px 4px #0000004d;

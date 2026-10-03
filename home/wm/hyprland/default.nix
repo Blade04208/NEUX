@@ -14,7 +14,7 @@ let
         path = $HOME/Pictures/Wallpapers/peace.jpg
         fit_mode = cover
     }
-
+    splash = false
   '';
 in
 {
